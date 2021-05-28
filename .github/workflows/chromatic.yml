@@ -1,0 +1,38 @@
+name: Chromatic
+
+on: [push]
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      GITHUB_TOKEN: ${{ steps.check.outputs.GITHUB_TOKEN }}
+      CHROMATIC_PROJECT_TOKEN: ${{ steps.check.outputs.CHROMATIC_PROJECT_TOKEN }}
+    steps:
+      - run: >
+          echo "::set-output name=GITHUB_TOKEN::${{ env.GITHUB_TOKEN != '' }}";
+          echo "::set-output name=CHROMATIC_PROJECT_TOKEN::${{ env.CHROMATIC_PROJECT_TOKEN != '' }}";
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+  deploy:
+    needs: ["secrets"]
+    if: >
+      needs.secrets.outputs.CHROMATIC_PROJECT_TOKEN == 'true' &&
+      needs.secrets.outputs.GITHUB_TOKEN == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: npm ci --ignore-scripts
+      - uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: "storybook:build"
+          exitOnceUploaded: true
