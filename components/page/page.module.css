@@ -1,0 +1,5 @@
+.container {
+  margin: 0 auto;
+  max-width: 34rem; /* Includes 2rem of padding */
+  padding: 0 1rem;
+}

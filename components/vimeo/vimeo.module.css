@@ -1,0 +1,20 @@
+.container {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.ratio {
+  display: block;
+  padding-bottom: 100%;
+  width: 100%;
+}
+
+.content {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

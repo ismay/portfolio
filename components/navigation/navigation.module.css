@@ -1,0 +1,37 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.link {
+  border-bottom: 2px solid var(--color-black-transparent);
+  color: var(--color-black);
+  display: inline-block;
+  font-family: var(--font-sans-serif);
+  font-size: calc(2 / 3 * 1rem);
+  font-weight: 600;
+  line-height: inherit;
+  margin-right: 0.75rem;
+  text-decoration: none;
+  transition: border-color 300ms;
+}
+
+.link:last-of-type {
+  margin-right: 0;
+}
+
+@media (min-width: 35em) {
+  .link {
+    font-size: 0.6rem;
+  }
+}
+
+@media (min-width: 40em) {
+  .link {
+    font-size: 0.55rem;
+  }
+}
+
+.link:hover,
+.link:active,
+.link:focus,
+.active {
+  border-color: var(--color-black);
+}

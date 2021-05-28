@@ -1,0 +1,17 @@
+.cell {
+  flex: 1 0 100%;
+  min-width: 0;
+  padding: calc(0.5 * var(--grid-gutter));
+}
+
+@media (min-width: 30em) {
+  .two {
+    flex: 1 0 50%;
+  }
+}
+
+@media (min-width: 35em) {
+  .three {
+    flex: 1 0 calc(100% / 3);
+  }
+}

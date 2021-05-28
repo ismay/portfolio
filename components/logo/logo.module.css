@@ -1,0 +1,5 @@
+.logo {
+  display: block;
+  fill: var(--color-black);
+  width: 8rem;
+}

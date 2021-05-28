@@ -1,0 +1,33 @@
+.container {
+  font-size: calc(2 / 3 * 1rem);
+  padding: 0.5rem 0;
+  -webkit-text-size-adjust: 100%;
+}
+
+.titleDateContainer {
+  display: flex;
+}
+
+.title {
+  flex: 0 1 auto;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.date {
+  white-space: nowrap;
+}
+
+/**
+ * Right aligned
+ */
+
+.containerRight {
+  text-align: right;
+}
+
+.containerRight .title {
+  flex: 1;
+}
