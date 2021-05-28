@@ -15,3 +15,7 @@
 - `VERCEL_PROJECT_ID`
 - `VERCEL_TEAM_ID`
 - `VERCEL_TOKEN`
+
+## Browserstack
+
+Live browser testing courtesy of [Browserstack](https://www.browserstack.com/open-source)
