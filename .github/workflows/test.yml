@@ -1,0 +1,77 @@
+name: Test
+
+on: [push]
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      GITHUB_TOKEN: ${{ steps.check.outputs.GITHUB_TOKEN }}
+      PERCY_TOKEN: ${{ steps.check.outputs.PERCY_TOKEN }}
+      VERCEL_TOKEN: ${{ steps.check.outputs.VERCEL_TOKEN }}
+      VERCEL_TEAM_ID: ${{ steps.check.outputs.VERCEL_TEAM_ID }}
+      VERCEL_PROJECT_ID: ${{ steps.check.outputs.VERCEL_PROJECT_ID }}
+    steps:
+      - run: >
+          echo "::set-output name=GITHUB_TOKEN::${{ env.GITHUB_TOKEN != '' }}";
+          echo "::set-output name=PERCY_TOKEN::${{ env.PERCY_TOKEN != '' }}";
+          echo "::set-output name=VERCEL_TOKEN::${{ env.VERCEL_TOKEN != '' }}";
+          echo "::set-output name=VERCEL_TEAM_ID::${{ env.VERCEL_TEAM_ID != '' }}";
+          echo "::set-output name=VERCEL_PROJECT_ID::${{ env.VERCEL_PROJECT_ID != '' }}";
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci --ignore-scripts
+      - run: npm run test:unit
+
+  vercel:
+    needs: ["secrets"]
+    if: >
+      needs.secrets.outputs.VERCEL_TOKEN == 'true' &&
+      needs.secrets.outputs.VERCEL_TEAM_ID == 'true' &&
+      needs.secrets.outputs.VERCEL_PROJECT_ID == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.url.outputs.preview_url }}
+    steps:
+      - uses: zentered/vercel-preview-url@v1.0.0
+        id: url
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          vercel_team_id: ${{ secrets.VERCEL_TEAM_ID }}
+          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
+      - uses: unlyed/github-action-await-vercel@v1.1.0
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          deployment-url: ${{ steps.url.outputs.preview_url }}
+          timeout: 360
+
+  e2e:
+    needs: ["secrets"]
+    if: >
+      needs.secrets.outputs.PERCY_TOKEN == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v2
+        with:
+          start: npm run dev:mocked
+          wait-on: "npx wait-on -s 1 http://localhost:3000"
+          config-file: .cypress/cypress.json
+          command-prefix: "percy exec -- npx"
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
