@@ -5,7 +5,7 @@ on: [push]
 jobs:
   secrets:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     outputs:
       GITHUB_TOKEN: ${{ steps.check.outputs.GITHUB_TOKEN }}
     steps:
@@ -20,10 +20,10 @@ jobs:
     if: >
       needs.secrets.outputs.GITHUB_TOKEN == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: styfle/cancel-workflow-action@0.9.0
         with:
-          workflow_id: chromatic.yml, lint.yml, test.yml
+          workflow_id: chromatic.yml, lint.yml, test.yml, lighthouse.yml
           all_but_latest: true
           access_token: ${{ secrets.GITHUB_TOKEN }}

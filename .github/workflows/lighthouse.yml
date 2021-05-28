@@ -1,0 +1,61 @@
+name: Lighthouse
+
+on: [push]
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      VERCEL_TOKEN: ${{ steps.check.outputs.VERCEL_TOKEN }}
+      GITHUB_TOKEN: ${{ steps.check.outputs.GITHUB_TOKEN }}
+    steps:
+      - run: >
+          echo "::set-output name=VERCEL_TOKEN::${{ env.VERCEL_TOKEN != '' }}";
+          echo "::set-output name=GITHUB_TOKEN::${{ env.GITHUB_TOKEN != '' }}";
+        id: check
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  vercel:
+    needs: ["secrets"]
+    if: >
+      needs.secrets.outputs.VERCEL_TOKEN == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      url: https://${{ steps.url.outputs.preview_url }}
+    steps:
+      - uses: zentered/vercel-preview-url@v1.0.0
+        id: url
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          vercel_team_id: ismaywolff
+          vercel_project_id: superwolff
+      - uses: unlyed/github-action-await-vercel@v1.1.0
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          deployment-url: ${{ steps.url.outputs.preview_url }}
+          timeout: 360
+
+  lighthouse:
+    needs: ["secrets", "vercel"]
+    if: >
+      needs.secrets.outputs.GITHUB_TOKEN == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v2
+      - uses: treosh/lighthouse-ci-action@v7
+        with:
+          urls: |
+            ${{ needs.vercel.outputs.url }}
+            ${{ needs.vercel.outputs.url }}/about
+            ${{ needs.vercel.outputs.url }}/work/stereotypes
+          temporaryPublicStorage: true
+          runs: 3
+        env:
+          LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

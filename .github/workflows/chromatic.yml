@@ -1,18 +1,11 @@
 name: Chromatic
 
-on:
-  push:
-    paths:
-      - ".github/workflows/chromatic.yml"
-      - ".storybook/**"
-      - "components/**"
-      - "styles/**"
-      - "package*.json"
+on: [push]
 
 jobs:
   secrets:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     outputs:
       GITHUB_TOKEN: ${{ steps.check.outputs.GITHUB_TOKEN }}
       CHROMATIC_PROJECT_TOKEN: ${{ steps.check.outputs.CHROMATIC_PROJECT_TOKEN }}
@@ -31,7 +24,7 @@ jobs:
       needs.secrets.outputs.CHROMATIC_PROJECT_TOKEN == 'true' &&
       needs.secrets.outputs.GITHUB_TOKEN == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
         with:
