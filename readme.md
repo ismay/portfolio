@@ -18,4 +18,4 @@
 
 ## Browserstack
 
-Live browser testing courtesy of [Browserstack](https://www.browserstack.com/open-source)
+Visual regression testing courtesy of [Browserstack](https://www.browserstack.com/open-source)
