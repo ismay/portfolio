@@ -1,12 +1,18 @@
 import c from "classnames";
-import { format, parse } from "date-fns";
+import date from "date-and-time";
 import T from "prop-types";
 import s from "./details.module.css";
 
-export default function Details({ date, dimensions, medium, right, title }) {
+export default function Details({
+  date: published,
+  dimensions,
+  medium,
+  right,
+  title,
+}) {
   const containerClass = c(s.container, { [s.containerRight]: right });
-  const parsed = parse(date, "yyyy-MM-dd", new Date());
-  const year = format(parsed, "yyyy");
+  const parsed = date.parse(published, "YYYY-MM-DD");
+  const year = date.format(parsed, "YYYY");
 
   return (
     <div className={containerClass}>
