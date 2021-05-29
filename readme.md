@@ -1,14 +1,14 @@
 # Superwolff
 
-> Portfolio site
+> Portfolio website
 
-## Environment variables
+## App environment variables
 
 - `API_MOCKING`: set to `enabled` to enable
 - `API_TOKEN`: graphcms api token
 - `API_URL`: graphcms api url
 
-## CI-only environment variables
+## Worflow environment variables
 
 - `GITHUB_TOKEN`
 - `PERCY_TOKEN`
@@ -18,4 +18,4 @@
 
 ## Browserstack
 
-Visual regression testing courtesy of [Browserstack](https://www.browserstack.com/open-source)
+Percy visual regression testing courtesy of [Browserstack](https://www.browserstack.com/open-source)
