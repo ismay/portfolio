@@ -10,10 +10,9 @@
 
 ## Worflow environment variables
 
+- `CHROMATIC_PROJECT_TOKEN`
 - `GITHUB_TOKEN`
 - `PERCY_TOKEN`
-- `VERCEL_PROJECT_ID`
-- `VERCEL_TEAM_ID`
 - `VERCEL_TOKEN`
 
 ## Browserstack
