@@ -6,7 +6,7 @@
     "dev:live": "next dev",
     "dev:mocked": "API_MOCKING=enabled next dev",
     "lint:eslint": "eslint --ignore-path .gitignore .",
-    "lint:prettier": "prettier --ignore-path .gitignore --list-different '**/*.{js,css,md,yml,json}'",
+    "lint:prettier": "prettier --ignore-path .gitignore --check .",
     "lint:stylelint": "stylelint --ignore-path .gitignore '**/*.css'",
     "prepare": "husky install",
     "start": "next start",
@@ -23,7 +23,6 @@
     "classnames": "^2.3.1",
     "date-and-time": "^1.0.0",
     "framer-motion": "^4.1.17",
-    "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "next": "^10.2.3",
     "prop-types": "^15.7.2",
@@ -54,6 +53,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-sort": "^1.5.0",
+    "graphql": "^15.5.0",
     "husky": "^6.0.0",
     "jest": "^27.0.1",
     "kill-port": "^1.6.1",
@@ -72,15 +72,13 @@
     ]
   },
   "lint-staged": {
-    "**/*.js": [
-      "prettier --write",
+    "*.js": [
       "eslint --fix"
     ],
-    "**/*.css": [
-      "prettier --write",
+    "*.css": [
       "stylelint --fix"
     ],
-    "**/*.{json,md,yml}": [
+    "*.{js,css,json,md,yml}": [
       "prettier --write"
     ]
   },
