@@ -1,18 +1,15 @@
 import c from "classnames";
-import date from "date-and-time";
 import T from "prop-types";
 import s from "./details.module.css";
 
-export default function Details({
-  date: published,
-  dimensions,
-  medium,
-  right,
-  title,
-}) {
+export default function Details({ date, dimensions, medium, right, title }) {
   const containerClass = c(s.container, { [s.containerRight]: right });
-  const parsed = date.parse(published, "YYYY-MM-DD");
-  const year = date.format(parsed, "YYYY");
+
+  /**
+   * Graphcms returns an ISO 8601 date, formatted YYYY-MM-DD
+   * https://graphcms.com/docs/schema/field-types#date
+   */
+  const year = date.slice(0, 4);
 
   return (
     <div className={containerClass}>
