@@ -97,7 +97,10 @@
       }
     ],
     "ci": {
-      "repoBranchBase": "main"
+      "repoBranchBase": "main",
+      "trackBranches": [
+        "main"
+      ]
     }
   },
   "eslintConfig": {
