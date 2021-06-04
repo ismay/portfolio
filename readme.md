@@ -10,6 +10,7 @@
 
 ## Worflow environment variables
 
+- `BUNDLEWATCH_GITHUB_TOKEN`
 - `CHROMATIC_PROJECT_TOKEN`
 - `GITHUB_TOKEN`
 - `PERCY_TOKEN`
