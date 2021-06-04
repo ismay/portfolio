@@ -1,39 +1,35 @@
+const pdf = "/pdf/cv-superwolff.pdf";
+const links = [
+  { href: "/", name: "Superwolff" },
+  { href: "/", name: "Work" },
+  { href: "/about", name: "About" },
+];
+
 describe("about", () => {
-  beforeEach(() => {
-    cy.visit("/about");
-  });
-
   it("renders as expected", () => {
-    cy.percySnapshot("about page renders as expected");
-  });
+    cy.visit("/about");
 
-  it("has the expected links", () => {
-    const links = [
-      { href: "/", name: "Superwolff" },
-      { href: "/", name: "Work" },
-      { href: "/about", name: "About" },
-    ];
-
+    // Ensure expected links are all present
     links.forEach(({ href, name }) => {
-      cy.findByRole("link", { name }).should("have.attr", "href", href);
+      cy.findByRole("link", { name })
+        .should("have.attr", "href", href)
+        .and("be.visible");
     });
-  });
 
-  it("has an email link", () => {
-    cy.findByRole("link", { name: "Email Superwolff" }).should(
-      "have.attr",
-      "href",
-      "mailto:superwolff@superwolff.nl"
-    );
-  });
+    // Ensure there's an email link
+    cy.findByRole("link", { name: "Email Superwolff" })
+      .should("have.attr", "href", "mailto:superwolff@superwolff.nl")
+      .and("be.visible");
 
-  it("has a working cv link", () => {
-    const pdf = "/pdf/cv-superwolff.pdf";
-
-    cy.findByRole("link", { name: "View CV" }).should("have.attr", "href", pdf);
+    // Ensure the cv link works
+    cy.findByRole("link", { name: "View CV" })
+      .should("have.attr", "href", pdf)
+      .and("be.visible");
     cy.request(pdf).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.headers["content-type"]).to.eq("application/pdf");
     });
+
+    cy.percySnapshot("about page renders as expected");
   });
 });

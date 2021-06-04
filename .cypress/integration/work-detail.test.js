@@ -1,21 +1,20 @@
+const links = [
+  { href: "/", name: "Superwolff" },
+  { href: "/", name: "Work" },
+  { href: "/about", name: "About" },
+];
+
 describe("work detail", () => {
-  beforeEach(() => {
-    cy.visit("/work/one");
-  });
-
   it("renders as expected", () => {
-    cy.percySnapshot("work detail page renders as expected");
-  });
+    cy.visit("/work/one");
 
-  it("has the expected links", () => {
-    const links = [
-      { href: "/", name: "Superwolff" },
-      { href: "/", name: "Work" },
-      { href: "/about", name: "About" },
-    ];
-
+    // Ensure expected links are all present
     links.forEach(({ href, name }) => {
-      cy.findByRole("link", { name }).should("have.attr", "href", href);
+      cy.findByRole("link", { name })
+        .should("have.attr", "href", href)
+        .and("be.visible");
     });
+
+    cy.percySnapshot("work detail page renders as expected");
   });
 });

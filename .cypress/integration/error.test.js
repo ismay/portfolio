@@ -1,6 +1,14 @@
+const links = [
+  { href: "/", name: "Superwolff" },
+  { href: "/", name: "Work" },
+  { href: "/about", name: "About" },
+];
+
 describe("error", () => {
-  it("renders an error page for non-existent routes", () => {
+  it("renders as expected", () => {
     cy.visit("/should-not-exist", { failOnStatusCode: false });
+
+    // Ensure the appropriate status code
     cy.request({
       failOnStatusCode: false,
       timeout: 500,
@@ -9,18 +17,13 @@ describe("error", () => {
       expect(response.status).to.eq(404);
     });
 
-    cy.percySnapshot("error page renders as expected");
-  });
-
-  it("has the expected links", () => {
-    const links = [
-      { href: "/", name: "Superwolff" },
-      { href: "/", name: "Work" },
-      { href: "/about", name: "About" },
-    ];
-
+    // Ensure expected links are all present
     links.forEach(({ href, name }) => {
-      cy.findByRole("link", { name }).should("have.attr", "href", href);
+      cy.findByRole("link", { name })
+        .should("have.attr", "href", href)
+        .and("be.visible");
     });
+
+    cy.percySnapshot("error page renders as expected");
   });
 });
