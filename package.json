@@ -54,7 +54,7 @@
     "eslint-plugin-sort": "^1.5.0",
     "graphql": "^15.5.0",
     "husky": "^6.0.0",
-    "jest": "^27.0.3",
+    "jest": "^27.0.4",
     "kill-port": "^1.6.1",
     "lint-staged": "^11.0.0",
     "msw": "^0.29.0",
