@@ -1,8 +1,26 @@
-.background {
+.unzoomed {
   background: var(--color-white);
   bottom: 0;
+  cursor: auto;
   left: 0;
+  opacity: 0;
+  pointer-events: none;
   position: fixed;
   right: 0;
   top: 0;
+  transition-duration: var(--transitionDuration);
+  transition-property: opacity;
+  transition-timing-function: var(--transitionTimingFunction);
+  z-index: auto;
+}
+
+.unzooming {
+  z-index: 1;
+}
+
+.zoomed {
+  cursor: zoom-out;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
 }

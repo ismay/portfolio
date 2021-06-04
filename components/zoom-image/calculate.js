@@ -1,22 +1,3 @@
-export const calculatePosition = ({ baseRect }) => {
-  const { innerHeight: windowHeight, innerWidth: windowWidth } = window;
-  const {
-    height: baseHeight,
-    left: baseLeft,
-    top: baseTop,
-    width: baseWidth,
-  } = baseRect;
-
-  const windowCenterX = windowWidth / 2;
-  const windowCenterY = windowHeight / 2;
-  const baseCenterX = baseLeft + baseWidth / 2;
-  const baseCenterY = baseTop + baseHeight / 2;
-  const x = windowCenterX - baseCenterX;
-  const y = windowCenterY - baseCenterY;
-
-  return { x, y };
-};
-
 export const calculateScale = ({ baseRect, margin }) => {
   const { innerHeight, innerWidth } = window;
   const { height: baseHeight, width: baseWidth } = baseRect;
@@ -34,4 +15,26 @@ export const calculateScale = ({ baseRect, margin }) => {
   const scale = zoomedWidth / baseWidth;
 
   return scale;
+};
+
+export const calculateX = ({ baseRect, scale }) => {
+  const { innerWidth: windowWidth } = window;
+  const { left: baseLeft, width: baseWidth } = baseRect;
+
+  const windowCenterX = windowWidth / 2;
+  const baseCenterX = baseLeft + baseWidth / 2;
+  const x = windowCenterX - baseCenterX;
+
+  return x / scale;
+};
+
+export const calculateY = ({ baseRect, scale }) => {
+  const { innerHeight: windowHeight } = window;
+  const { height: baseHeight, top: baseTop } = baseRect;
+
+  const windowCenterY = windowHeight / 2;
+  const baseCenterY = baseTop + baseHeight / 2;
+  const y = windowCenterY - baseCenterY;
+
+  return y / scale;
 };

@@ -1,0 +1,18 @@
+.unzoomed {
+  cursor: zoom-in;
+  transition-duration: var(--transitionDuration);
+  transition-property: transform;
+  transition-timing-function: var(--transitionTimingFunction);
+}
+
+.unzooming {
+  position: relative;
+  z-index: 1;
+}
+
+.zoomed {
+  cursor: zoom-out;
+  position: relative;
+  transform: scale(var(--ts)) translate(var(--tx), var(--ty));
+  z-index: 1;
+}

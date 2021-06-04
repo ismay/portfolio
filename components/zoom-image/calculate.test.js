@@ -1,15 +1,16 @@
-import { calculatePosition, calculateScale } from "./calculate";
+import { calculateScale, calculateX, calculateY } from "./calculate";
 
 afterEach(() => {
   delete global.innerHeight;
   delete global.innerWidth;
 });
 
-describe("calculatePosition", () => {
+describe("calculateX", () => {
   it("should return the expected x value", () => {
     global.innerWidth = 1000;
     global.innerHeight = 1000;
 
+    const scale = 2;
     const baseRect = {
       height: 100,
       left: 0,
@@ -17,15 +18,18 @@ describe("calculatePosition", () => {
       width: 100,
     };
 
-    const { x } = calculatePosition({ baseRect });
+    const x = calculateX({ baseRect, scale });
 
-    expect(x).toBe(450);
+    expect(x).toBe(225);
   });
+});
 
+describe("calculateY", () => {
   it("should return the expected y value", () => {
     global.innerWidth = 1000;
     global.innerHeight = 1000;
 
+    const scale = 2;
     const baseRect = {
       height: 100,
       left: 0,
@@ -33,9 +37,9 @@ describe("calculatePosition", () => {
       width: 100,
     };
 
-    const { y } = calculatePosition({ baseRect });
+    const y = calculateY({ baseRect, scale });
 
-    expect(y).toBe(450);
+    expect(y).toBe(225);
   });
 });
 

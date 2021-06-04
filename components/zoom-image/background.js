@@ -1,35 +1,36 @@
-import { motion } from "framer-motion";
+import useLayoutEffect from "@react-hook/passive-layout-effect";
+import usePrevious from "@react-hook/previous";
+import c from "classnames";
 import T from "prop-types";
+import { useState } from "react";
 import s from "./background.module.css";
 
-export default function Background({ animate }) {
-  const variants = {
-    normal: {
-      cursor: "auto",
-      opacity: 0,
-      pointerEvents: "none",
-      transitionEnd: {
-        zIndex: "auto",
-      },
-    },
-    zoomed: {
-      cursor: "zoom-out",
-      opacity: 1,
-      pointerEvents: "auto",
-      zIndex: 1,
-    },
+export default function Background({ zoomed }) {
+  const prevZoomed = usePrevious(zoomed);
+  const [isUnzooming, setIsUnzooming] = useState(false);
+
+  useLayoutEffect(() => {
+    if (prevZoomed && !zoomed) {
+      setIsUnzooming(true);
+    }
+  }, [prevZoomed, zoomed]);
+
+  const handleTransitionEnd = () => {
+    if (!zoomed) {
+      setIsUnzooming(false);
+    }
   };
 
+  const backgroundClass = c(s.unzoomed, {
+    [s.unzooming]: isUnzooming,
+    [s.zoomed]: zoomed,
+  });
+
   return (
-    <motion.div
-      animate={animate}
-      className={s.background}
-      initial={false}
-      variants={variants}
-    />
+    <div className={backgroundClass} onTransitionEnd={handleTransitionEnd} />
   );
 }
 
 Background.propTypes = {
-  animate: T.string.isRequired,
+  zoomed: T.bool.isRequired,
 };

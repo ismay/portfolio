@@ -6,13 +6,15 @@ import ResponsiveImage from "../responsive-image";
 import Background from "./background";
 import Foreground from "./foreground";
 import useWindowListener from "./window-listener";
-import s from "./zoom-image.module.css";
 
 export default function ZoomImage({ alt, height, margin, src, width }) {
   const baseRef = useRef(null);
-  const foregroundRef = useRef(null);
   const [zoomed, setZoomed] = useState(false);
   const [zoomedSize, setZoomedSize] = useState(0);
+  const style = {
+    "--transitionDuration": "300ms",
+    "--transitionTimingFunction": "ease-in-out",
+  };
 
   // Allow retrieving the base size from within a child component
   const getBaseRect = () => {
@@ -29,17 +31,6 @@ export default function ZoomImage({ alt, height, margin, src, width }) {
 
   const toggleZoom = () => setZoomed(!zoomed);
   const unzoom = () => setZoomed(false);
-  const handleClick = toggleZoom;
-
-  // Update zoomed size when the foreground animation is done
-  const handleAnimationComplete = () => {
-    if (!foregroundRef.current) {
-      return;
-    }
-
-    const rect = foregroundRef.current.getBoundingClientRect();
-    setZoomedSize(Math.round(rect.width));
-  };
 
   const handleKeyDown = (e) => {
     switch (e.key) {
@@ -64,32 +55,27 @@ export default function ZoomImage({ alt, height, margin, src, width }) {
    */
 
   const debouncedUnzoom = useDebounceCallback(unzoom, 300, true);
-  const enabled = zoomed;
 
   // Unzoom whenever something happens that could invalidate the calculations
-  useWindowListener("scroll", debouncedUnzoom, { enabled });
-  useWindowListener("resize", debouncedUnzoom, { enabled });
-  useWindowListener("orientationchange", debouncedUnzoom, { enabled });
-
-  // The two animation types
-  const animate = zoomed ? "zoomed" : "normal";
+  useWindowListener("scroll", debouncedUnzoom, { enabled: zoomed });
+  useWindowListener("resize", debouncedUnzoom, { enabled: zoomed });
+  useWindowListener("orientationchange", debouncedUnzoom, { enabled: zoomed });
 
   return (
     <div
       ref={baseRef}
-      className={s.container}
-      onClick={handleClick}
+      onClick={toggleZoom}
       onKeyDown={handleKeyDown}
       role="button"
+      style={style}
       tabIndex="0"
     >
-      <Background animate={animate} />
+      <Background zoomed={zoomed} />
       <Foreground
-        ref={foregroundRef}
-        animate={animate}
         getBaseRect={getBaseRect}
         margin={margin}
-        onAnimationComplete={handleAnimationComplete}
+        setZoomedSize={setZoomedSize}
+        zoomed={zoomed}
       >
         <BoxShadow>
           <ResponsiveImage
