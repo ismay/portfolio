@@ -3,8 +3,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev:live": "next dev",
-    "dev:mocked": "API_MOCKING=enabled next dev",
+    "prebundlewatch": "API_MOCKING=enabled next build",
+    "bundlewatch": "bundlewatch",
+    "dev": "next dev",
     "lint:eslint": "eslint --ignore-path .gitignore .",
     "lint:prettier": "prettier --ignore-path .gitignore --check .",
     "lint:stylelint": "stylelint --ignore-path .gitignore '**/*.css'",
@@ -12,7 +13,7 @@
     "start": "next start",
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006 --quiet",
-    "pretest:e2e": "npm run dev:mocked & wait-on -s 1 http://localhost:3000",
+    "pretest:e2e": "API_MOCKING=enabled npm run dev & wait-on -s 1 http://localhost:3000",
     "test:e2e": "cypress open --config-file .cypress/cypress.json",
     "posttest:e2e": "kill-port 3000",
     "test:unit": "jest"
@@ -41,6 +42,7 @@
     "@storybook/react": "^6.2.9",
     "@testing-library/cypress": "^7.0.6",
     "babel-loader": "^8.2.2",
+    "bundlewatch": "^0.3.2",
     "cypress": "^7.4.0",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -84,6 +86,19 @@
     "*.{js,css,json,md,yml}": [
       "prettier --write"
     ]
+  },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": ".next/static/chunks/**/*.js"
+      },
+      {
+        "path": ".next/static/css/**/*.css"
+      }
+    ],
+    "ci": {
+      "repoBranchBase": "main"
+    }
   },
   "eslintConfig": {
     "extends": [
