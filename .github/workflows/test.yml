@@ -20,7 +20,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci --ignore-scripts
+      - uses: bahmutov/npm-install@v1
+        with:
+          install-command: npm ci --ignore-scripts
       - run: npm run test:unit
 
   e2e:

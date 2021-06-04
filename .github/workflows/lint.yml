@@ -8,7 +8,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci --ignore-scripts
+      - uses: bahmutov/npm-install@v1
+        with:
+          install-command: npm ci --ignore-scripts
       - run: npm run lint:eslint
 
   stylelint:
@@ -16,7 +18,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci --ignore-scripts
+      - uses: bahmutov/npm-install@v1
+        with:
+          install-command: npm ci --ignore-scripts
       - run: npm run lint:stylelint
 
   prettier:
@@ -24,5 +28,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci --ignore-scripts
+      - uses: bahmutov/npm-install@v1
+        with:
+          install-command: npm ci --ignore-scripts
       - run: npm run lint:prettier
