@@ -25,5 +25,4 @@ jobs:
       - uses: styfle/cancel-workflow-action@0.9.0
         with:
           workflow_id: chromatic.yml, lint.yml, test.yml, lighthouse.yml
-          all_but_latest: true
           access_token: ${{ secrets.GITHUB_TOKEN }}
