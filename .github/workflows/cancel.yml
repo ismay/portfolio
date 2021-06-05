@@ -24,5 +24,5 @@ jobs:
     steps:
       - uses: styfle/cancel-workflow-action@0.9.0
         with:
-          workflow_id: chromatic.yml, lint.yml, test.yml, lighthouse.yml
+          workflow_id: bundlewatch.yml, chromatic.yml, lighthouse.yml, lint.yml, test.yml
           access_token: ${{ secrets.GITHUB_TOKEN }}
