@@ -21,7 +21,7 @@ jobs:
         with:
           vercel_team_id: ismaywolff
           vercel_project_id: superwolff
-      - uses: unlyed/github-action-await-vercel@v1.1.0
+      - uses: unlyed/github-action-await-vercel@v1.2.12
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         with:
