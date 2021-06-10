@@ -7,18 +7,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  secrets:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    outputs:
-      PERCY_TOKEN: ${{ steps.check.outputs.PERCY_TOKEN }}
-    steps:
-      - run: >
-          echo "::set-output name=PERCY_TOKEN::${{ env.PERCY_TOKEN != '' }}";
-        id: check
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-
   unit:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -29,9 +17,7 @@ jobs:
       - run: npm run test:unit
 
   e2e:
-    needs: ["secrets"]
-    if: >
-      needs.secrets.outputs.PERCY_TOKEN == 'true'
+    if: github.repository_owner == 'ismay' && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

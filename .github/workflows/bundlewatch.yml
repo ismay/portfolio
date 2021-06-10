@@ -7,22 +7,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  secrets:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    outputs:
-      BUNDLEWATCH_GITHUB_TOKEN: ${{ steps.check.outputs.BUNDLEWATCH_GITHUB_TOKEN }}
-    steps:
-      - run: >
-          echo "::set-output name=BUNDLEWATCH_GITHUB_TOKEN::${{ env.BUNDLEWATCH_GITHUB_TOKEN != '' }}";
-        id: check
-        env:
-          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-
   bundlewatch:
-    needs: ["secrets"]
-    if: >
-      needs.secrets.outputs.BUNDLEWATCH_GITHUB_TOKEN == 'true'
+    if: github.repository_owner == 'ismay' && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

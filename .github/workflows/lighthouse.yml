@@ -7,25 +7,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  secrets:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    outputs:
-      VERCEL_TOKEN: ${{ steps.check.outputs.VERCEL_TOKEN }}
-      GITHUB_TOKEN: ${{ steps.check.outputs.GITHUB_TOKEN }}
-    steps:
-      - run: >
-          echo "::set-output name=VERCEL_TOKEN::${{ env.VERCEL_TOKEN != '' }}";
-          echo "::set-output name=GITHUB_TOKEN::${{ env.GITHUB_TOKEN != '' }}";
-        id: check
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   vercel:
-    needs: ["secrets"]
-    if: >
-      needs.secrets.outputs.VERCEL_TOKEN == 'true'
+    if: github.repository_owner == 'ismay' && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     outputs:
@@ -46,9 +29,8 @@ jobs:
           timeout: 360
 
   lighthouse:
-    needs: ["secrets", "vercel"]
-    if: >
-      needs.secrets.outputs.GITHUB_TOKEN == 'true'
+    needs: ["vercel"]
+    if: github.repository_owner == 'ismay' && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
