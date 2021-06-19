@@ -10,6 +10,10 @@ import Main from "../components/main";
 import Page from "../components/page";
 
 if (process.env.API_MOCKING === "enabled") {
+  /**
+   * This require will only be loaded server-side when api mocking is enabled, due
+   * to a bug in next.js bundling: https://github.com/ismay/superwolff/issues/4
+   */
   require("../.msw");
 }
 
