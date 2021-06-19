@@ -5,8 +5,6 @@
     "prebuild": "if-env CLEAN_MOCKS=enabled && rimraf public/_images || noop",
     "build": "next build",
     "build:analyze": "ANALYZE_BUNDLE=enabled next build",
-    "prebundlewatch": "API_MOCKING=enabled next build",
-    "bundlewatch": "bundlewatch",
     "dev": "next dev",
     "lint:eslint": "eslint --ignore-path .gitignore .",
     "lint:prettier": "prettier --ignore-path .gitignore --check .",
@@ -46,7 +44,6 @@
     "@storybook/react": "^6.2.9",
     "@testing-library/cypress": "^7.0.6",
     "babel-loader": "^8.2.2",
-    "bundlewatch": "^0.3.2",
     "cypress": "^7.5.0",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -96,22 +93,6 @@
     "*.{js,css,json,md,yml}": [
       "prettier --write"
     ]
-  },
-  "bundlewatch": {
-    "files": [
-      {
-        "path": ".next/static/chunks/**/*.js"
-      },
-      {
-        "path": ".next/static/css/**/*.css"
-      }
-    ],
-    "ci": {
-      "repoBranchBase": "main",
-      "trackBranches": [
-        "main"
-      ]
-    }
   },
   "eslintConfig": {
     "extends": [
