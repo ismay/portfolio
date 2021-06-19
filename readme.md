@@ -4,6 +4,7 @@
 
 ## App environment variables
 
+- `ANALYZE_BUNDLE`: set to `enabled` to enable
 - `API_MOCKING`: set to `enabled` to enable
 - `API_TOKEN`: graphcms api token
 - `API_URL`: graphcms api url
