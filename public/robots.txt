@@ -1,3 +1,2 @@
 User-agent: *
-Disallow: /_images/
 Disallow: /pdf/

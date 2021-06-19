@@ -2,6 +2,7 @@
   "name": "superwolff",
   "private": true,
   "scripts": {
+    "prebuild": "if-env CLEAN_MOCKS=enabled && rimraf public/_images || noop",
     "build": "next build",
     "build:analyze": "ANALYZE_BUNDLE=enabled next build",
     "prebundlewatch": "API_MOCKING=enabled next build",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@cloudfour/simple-svg-placeholder": "^1.0.2",
+    "@delucis/if-env": "^1.1.2",
     "@next/bundle-analyzer": "^11.0.0",
     "@percy/cli": "^1.0.0-beta.52",
     "@percy/cypress": "^3.1.0",
@@ -63,7 +65,9 @@
     "kill-port": "^1.6.1",
     "lint-staged": "^11.0.0",
     "msw": "^0.29.0",
+    "noop-cli": "^2.0.0",
     "prettier": "^2.3.1",
+    "rimraf": "^3.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
