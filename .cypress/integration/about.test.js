@@ -3,6 +3,10 @@ const links = [
   { href: "/", name: "Superwolff" },
   { href: "/", name: "Work" },
   { href: "/about", name: "About" },
+  {
+    href: "https://theartling.com/en/print-artists/superwolff",
+    name: "Buy prints at The Artling",
+  },
 ];
 
 describe("about", () => {

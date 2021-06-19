@@ -27,6 +27,13 @@ export default function About() {
         <a href="mailto:superwolff@superwolff.nl" title="Email Superwolff">
           email
         </a>
+        . Prints of his work can be bought through{" "}
+        <a
+          href="https://theartling.com/en/print-artists/superwolff"
+          title="Buy prints at The Artling"
+        >
+          The Artling
+        </a>
         .
       </p>
     </>
