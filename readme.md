@@ -12,9 +12,12 @@
 
 ## Worflow environment variables
 
+- `API_TOKEN`
+- `API_URL`
 - `CHROMATIC_PROJECT_TOKEN`
 - `GITHUB_TOKEN`
 - `PERCY_TOKEN`
+- `RELATIVE_CI_KEY`
 - `VERCEL_TOKEN`
 
 ## Browserstack

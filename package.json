@@ -4,7 +4,6 @@
   "scripts": {
     "prebuild": "if-env CLEAN_MOCKS=enabled && rimraf public/_images || noop",
     "build": "next build",
-    "build:analyze": "ANALYZE_BUNDLE=enabled next build",
     "dev": "next dev",
     "lint:eslint": "eslint --ignore-path .gitignore .",
     "lint:prettier": "prettier --ignore-path .gitignore --check .",
@@ -34,9 +33,9 @@
     "@babel/core": "^7.14.6",
     "@cloudfour/simple-svg-placeholder": "^1.0.2",
     "@delucis/if-env": "^1.1.2",
-    "@next/bundle-analyzer": "^11.0.0",
     "@percy/cli": "^1.0.0-beta.52",
     "@percy/cypress": "^3.1.0",
+    "@relative-ci/agent": "^2.0.0",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
