@@ -21,7 +21,7 @@
     "@react-hook/debounce": "^4.0.0",
     "@react-hook/passive-layout-effect": "^1.2.1",
     "@react-hook/previous": "^1.0.1",
-    "@react-hook/size": "^2.1.1",
+    "@react-hook/size": "^2.1.2",
     "classnames": "^2.3.1",
     "graphql-request": "^3.4.0",
     "next": "^11.0.0",
