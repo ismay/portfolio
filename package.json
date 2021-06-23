@@ -37,7 +37,7 @@
     "@percy/cypress": "^3.1.0",
     "@relative-ci/agent": "^2.0.0",
     "@storybook/addon-actions": "^6.3.0",
-    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
     "@storybook/builder-webpack5": "^6.2.9",
     "@storybook/react": "^6.2.9",
