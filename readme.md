@@ -2,18 +2,23 @@
 
 > Portfolio website
 
-## Build environment variables
+## Environment variables
 
-- `ANALYZE_BUNDLE`: set to `enabled` to enable
-- `API_MOCKING`: set to `enabled` to enable
-- `API_TOKEN`: graphcms api token
-- `API_URL`: graphcms api url
-- `CLEAN_MOCKS`: set to `enabled` to enable
+### Used client-side and server-side
 
-## Worflow environment variables
+- `NEXT_PUBLIC_API_MOCKING`: set to either `enabled` or `disabled`.
 
-- `API_TOKEN`
-- `API_URL`
+### Used server-side only
+
+- `API_TOKEN`: the Graphcms token.
+- `API_URL`: the Graphcms url.
+
+### Affects the build
+
+- `ANALYZE_BUNDLE`: set this to `enabled` to analyze the client and server bundles. Referenced in `next.config.js`.
+
+### Used only in workflows
+
 - `CHROMATIC_PROJECT_TOKEN`
 - `GITHUB_TOKEN`
 - `PERCY_TOKEN`

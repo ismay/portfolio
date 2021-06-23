@@ -30,5 +30,4 @@ jobs:
           command-prefix: "percy exec -- npx"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          NEXT_TELEMETRY_DISABLED: 1
-          API_MOCKING: "enabled"
+          NODE_ENV: "test"

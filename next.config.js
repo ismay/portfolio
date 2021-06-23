@@ -4,8 +4,10 @@ const { RelativeCiAgentWebpackPlugin } = require("@relative-ci/agent");
 
 const webpack = (config, options) => {
   const isEnabled = process.env.ANALYZE_BUNDLE === "enabled";
-  const { dev, isServer } = options;
-  const shouldAnalyze = !dev && !isServer && isEnabled;
+  const { isServer } = options;
+
+  // Only analyze the client bundle
+  const shouldAnalyze = !isServer && isEnabled;
 
   if (shouldAnalyze) {
     config.plugins.push(new RelativeCiAgentWebpackPlugin());

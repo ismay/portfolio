@@ -26,7 +26,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         with:
           deployment-url: ${{ steps.url.outputs.preview_url }}
-          timeout: 360
+          timeout: 600
 
   lighthouse:
     needs: ["vercel"]

@@ -7,7 +7,7 @@ const handlers = [
   graphql.query("getWorks", (req, res, ctx) =>
     res(
       ctx.data({
-        works: [one, two, three],
+        works,
       })
     )
   ),
