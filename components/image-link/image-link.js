@@ -1,8 +1,8 @@
 import Link from "next/link";
 import T from "prop-types";
-import s from "./undecorated-link.module.css";
+import s from "./image-link.module.css";
 
-export default function UndecoratedLink({ children, href, title }) {
+export default function ImageLink({ children, href, title }) {
   return (
     <Link href={href}>
       <a className={s.link} title={title}>
@@ -12,7 +12,7 @@ export default function UndecoratedLink({ children, href, title }) {
   );
 }
 
-UndecoratedLink.propTypes = {
+ImageLink.propTypes = {
   children: T.node.isRequired,
   href: T.string.isRequired,
   title: T.string.isRequired,

@@ -22,7 +22,7 @@ export const one = {
     },
   ],
   medium: "Inkjet print",
-  releasedAt: "2020-01-01",
+  published: "2020-01-01",
   slug: "one",
   thumbnail: {
     height: 927,
@@ -57,7 +57,7 @@ export const two = {
     },
   ],
   medium: "Inkjet print",
-  releasedAt: "2020-02-02",
+  published: "2020-02-02",
   slug: "two",
   thumbnail: {
     height: 927,
@@ -92,7 +92,7 @@ export const three = {
     },
   ],
   medium: "Inkjet print",
-  releasedAt: "2020-03-03",
+  published: "2020-03-03",
   slug: "three",
   thumbnail: {
     height: 927,

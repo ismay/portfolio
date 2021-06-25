@@ -15,13 +15,9 @@
     "pretest:e2e": "NODE_ENV=test npm run dev & wait-on -s 1 http://localhost:3000",
     "test:e2e": "cypress open --config-file .cypress/cypress.json",
     "posttest:e2e": "kill-port 3000",
-    "test:unit": "jest"
+    "test:unit": "jest --passWithNoTests"
   },
   "dependencies": {
-    "@react-hook/debounce": "^4.0.0",
-    "@react-hook/passive-layout-effect": "^1.2.1",
-    "@react-hook/previous": "^1.0.1",
-    "@react-hook/size": "^2.1.2",
     "classnames": "^2.3.1",
     "graphql-request": "^3.4.0",
     "next": "^11.0.1",

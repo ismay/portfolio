@@ -1,12 +1,5 @@
-import { GraphQLClient } from "graphql-request";
-
-const authorization = `Bearer ${process.env.API_TOKEN}`;
-const url = process.env.API_URL;
-
-const client = new GraphQLClient(url, {
-  headers: {
-    authorization,
-  },
-});
+import client from "./client";
+import imageUrlToDataUrl from "./image";
 
 export default client;
+export { imageUrlToDataUrl };

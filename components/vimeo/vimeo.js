@@ -1,7 +1,7 @@
 import T from "prop-types";
 import s from "./vimeo.module.css";
 
-export default function Vimeo({ height, vimeo, width }) {
+export default function Vimeo({ height, id, title, width }) {
   // This forces the correct aspect ratio
   const ratio = `calc(${height} / ${width} * 100%)`;
 
@@ -13,8 +13,8 @@ export default function Vimeo({ height, vimeo, width }) {
         className={s.content}
         frameBorder="0"
         height={height}
-        src={`https://player.vimeo.com/video/${vimeo}?title=0&byline=0&portrait=0`}
-        title={vimeo}
+        src={`https://player.vimeo.com/video/${id}?title=0&byline=0&portrait=0`}
+        title={title}
         width={width}
       />
     </div>
@@ -23,6 +23,7 @@ export default function Vimeo({ height, vimeo, width }) {
 
 Vimeo.propTypes = {
   height: T.number.isRequired,
-  vimeo: T.string.isRequired,
+  id: T.string.isRequired,
+  title: T.string.isRequired,
   width: T.number.isRequired,
 };

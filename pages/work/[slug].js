@@ -1,12 +1,12 @@
 import { gql } from "graphql-request";
 import Head from "next/head";
 import T from "prop-types";
-import client from "../../client";
+import client, { imageUrlToDataUrl } from "../../client";
 import BoxShadow from "../../components/box-shadow";
 import Details from "../../components/details";
 import { Cell, Grid } from "../../components/grid";
+import { GalleryImage } from "../../components/image";
 import Vimeo from "../../components/vimeo";
-import ZoomImage from "../../components/zoom-image";
 
 export default function Work({ work }) {
   const hasVideos = work.videos.length > 0;
@@ -19,15 +19,19 @@ export default function Work({ work }) {
       </Head>
       {hasImages && (
         <Grid>
-          {work.images.map((image) => (
+          {work.images.map((image, index) => (
             <Cell key={image.id} columns={3}>
-              <ZoomImage
-                alt={work.title}
-                height={image.height}
-                margin={25}
-                src={image.url}
-                width={image.width}
-              />
+              <BoxShadow>
+                <GalleryImage
+                  alt={work.title}
+                  amount={work.images.length}
+                  blurDataURL={image.placeholderDataUrl}
+                  height={image.height}
+                  index={index}
+                  src={image.url}
+                  width={image.width}
+                />
+              </BoxShadow>
             </Cell>
           ))}
         </Grid>
@@ -39,7 +43,8 @@ export default function Work({ work }) {
               <BoxShadow>
                 <Vimeo
                   height={video.height}
-                  vimeo={video.vimeo}
+                  id={video.vimeoId}
+                  title={work.title}
                   width={video.width}
                 />
               </BoxShadow>
@@ -48,7 +53,7 @@ export default function Work({ work }) {
         </Grid>
       )}
       <Details
-        date={work.releasedAt}
+        date={work.published}
         dimensions={work.dimensions}
         medium={work.medium}
         right
@@ -65,18 +70,19 @@ Work.propTypes = {
       T.shape({
         height: T.number.isRequired,
         id: T.string.isRequired,
+        placeholderDataUrl: T.string,
         url: T.string.isRequired,
         width: T.number.isRequired,
       })
     ).isRequired,
     medium: T.string,
-    releasedAt: T.string.isRequired,
+    published: T.string.isRequired,
     title: T.string.isRequired,
     videos: T.arrayOf(
       T.shape({
         height: T.number.isRequired,
         id: T.string.isRequired,
-        vimeo: T.string.isRequired,
+        vimeoId: T.string.isRequired,
         width: T.number.isRequired,
       })
     ).isRequired,
@@ -105,7 +111,7 @@ export async function getStaticProps({ params }) {
       query getWork($slug: String!) {
         work(where: { slug: $slug }) {
           title
-          releasedAt
+          published
           medium
           dimensions
           images {
@@ -113,10 +119,16 @@ export async function getStaticProps({ params }) {
             url
             height
             width
+            placeholderUrl: url(
+              transformation: {
+                image: { resize: { width: 10, height: 10, fit: clip } }
+              }
+            )
+            mimeType
           }
           videos {
             id
-            vimeo
+            vimeoId
             height
             width
           }
@@ -131,6 +143,28 @@ export async function getStaticProps({ params }) {
       notFound: true,
       revalidate: 3600,
     };
+  }
+
+  /**
+   * Fetch all image placeholders, convert to base64 and add to the work. This
+   * currently runs serially, but can be easily modified to run in parallel if
+   * necessary.
+   */
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const image of work.images) {
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      const placeholderDataUrl = await imageUrlToDataUrl(
+        image.placeholderUrl,
+        image.mimeType
+      );
+
+      // eslint-disable-next-line no-param-reassign
+      image.placeholderDataUrl = placeholderDataUrl;
+    } catch (e) {
+      // Currently swallows any errors, this should be tracked
+    }
   }
 
   return {
