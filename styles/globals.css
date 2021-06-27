@@ -14,8 +14,6 @@
   --grid-gutter: calc(2 / 3 * 1rem);
 
   /* Z-index */
-  --zindex-zoom-background: 1;
-  --zindex-zoom-image: 1;
   --zindex-loading-indicator: 1;
 }
 
