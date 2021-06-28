@@ -1,5 +1,6 @@
 import Image from "next/image";
 import T from "prop-types";
+import calculateSizes from "./thumbnail-sizes";
 
 export default function ThumbnailImage({
   alt,
@@ -10,37 +11,7 @@ export default function ThumbnailImage({
   src,
   width,
 }) {
-  const remainderForTwo = amount % 2;
-  const isLast = index + 1 === amount;
-  const sizes = [];
-
-  /**
-   * Going through the sizes from large to small viewport
-   */
-
-  // Large
-  if (remainderForTwo === 1 && isLast) {
-    // It will be full width
-    sizes.push("(min-width: 50em) 50em");
-  } else {
-    // It will be half the available width
-    sizes.push("(min-width: 50em) 25em");
-  }
-
-  // Medium
-  if (remainderForTwo === 1 && isLast) {
-    // It will be full width
-    sizes.push("(min-width: 30em) 100vw");
-  } else {
-    // It will be half the available width
-    sizes.push("(min-width: 30em) 50vw");
-  }
-
-  // Small
-  sizes.push(
-    // All images are full width at the smallest size
-    "100vw"
-  );
+  const sizes = calculateSizes({ amount, index });
 
   return (
     <Image
@@ -49,7 +20,7 @@ export default function ThumbnailImage({
       height={height}
       layout="responsive"
       placeholder={blurDataURL ? "blur" : undefined}
-      sizes={sizes.join(", ")}
+      sizes={sizes}
       src={src}
       width={width}
     />

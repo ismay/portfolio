@@ -15,7 +15,7 @@
     "pretest:e2e": "NODE_ENV=test npm run dev & wait-on -s 1 http://localhost:3000",
     "test:e2e": "cypress open --config-file .cypress/cypress.json",
     "posttest:e2e": "kill-port 3000",
-    "test:unit": "jest --passWithNoTests"
+    "test:unit": "jest"
   },
   "dependencies": {
     "classnames": "^2.3.1",

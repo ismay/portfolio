@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`calculateSizes should return the expected sizes for image 1 of total 1 1`] = `"(min-width: 50em) 50em, (min-width: 35em) 100vw, (min-width: 30em) 100vw, 100vw"`;
+
+exports[`calculateSizes should return the expected sizes for image 2 of total 2 1`] = `"(min-width: 50em) 25em, (min-width: 35em) 50vw, (min-width: 30em) 50vw, 100vw"`;
+
+exports[`calculateSizes should return the expected sizes for image 3 of total 3 1`] = `"(min-width: 50em) 17em, (min-width: 35em) 33vw, (min-width: 30em) 100vw, 100vw"`;
+
+exports[`calculateSizes should return the expected sizes for image 4 of total 4 1`] = `"(min-width: 50em) 50em, (min-width: 35em) 100vw, (min-width: 30em) 50vw, 100vw"`;
+
+exports[`calculateSizes should return the expected sizes for image 5 of total 5 1`] = `"(min-width: 50em) 25em, (min-width: 35em) 50vw, (min-width: 30em) 100vw, 100vw"`;
