@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types, react/jsx-props-no-spreading, global-require */
 
 import "../styles/globals.css";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Header from "../components/header";
@@ -13,7 +12,7 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
   require("../.msw");
 }
 
-export default function App({ Component, pageProps }) {
+export default function CustomApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,28 +37,6 @@ export default function App({ Component, pageProps }) {
 
   return (
     <Page>
-      <Head>
-        <link
-          href="/favicon/favicon-16x16.png"
-          rel="icon"
-          sizes="16x16"
-          type="image/png"
-        />
-        <link
-          href="/favicon/favicon-32x32.png"
-          rel="icon"
-          sizes="32x32"
-          type="image/png"
-        />
-        <script
-          async
-          data-dnt="false"
-          data-host="https://microanalytics.io"
-          defer
-          id="ZwSg9rf6GA"
-          src="https://microanalytics.io/js/script.js"
-        />
-      </Head>
       <Header />
       <Main>
         <Component {...pageProps} />
