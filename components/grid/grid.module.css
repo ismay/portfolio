@@ -1,4 +1,6 @@
 .grid {
+  --grid-gutter: calc(2 / 3 * 1rem);
+
   display: flex;
   flex-wrap: wrap;
   margin: calc(-0.5 * var(--grid-gutter));
