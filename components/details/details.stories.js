@@ -65,7 +65,7 @@ export const RightAligned = Template.bind({});
 RightAligned.args = {
   date: "2010-01-01",
   dimensions: "10 x 10 cm",
+  isRightAligned: true,
   medium: "Photography",
-  right: true,
   title: "The Title",
 };

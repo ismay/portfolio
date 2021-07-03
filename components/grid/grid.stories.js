@@ -30,7 +30,7 @@ export const Columns1 = Template.bind({});
 
 Columns1.args = {
   children: [1, 2].map((key) => (
-    <Cell key={key} columns={1}>
+    <Cell columns={1} key={key}>
       <Placeholder />
     </Cell>
   )),
@@ -46,7 +46,7 @@ export const Columns2 = Template.bind({});
 
 Columns2.args = {
   children: [1, 2, 3].map((key) => (
-    <Cell key={key} columns={2}>
+    <Cell columns={2} key={key}>
       <Placeholder />
     </Cell>
   )),
@@ -62,7 +62,7 @@ export const Columns3 = Template.bind({});
 
 Columns3.args = {
   children: [1, 2, 3, 4, 5].map((key) => (
-    <Cell key={key} columns={3}>
+    <Cell columns={3} key={key}>
       <Placeholder />
     </Cell>
   )),

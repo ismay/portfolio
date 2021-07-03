@@ -18,9 +18,9 @@ class CustomDocument extends Document {
             type="image/png"
           />
           <script
+            defer
             data-dnt="false"
             data-host="https://microanalytics.io"
-            defer
             id="ZwSg9rf6GA"
             src="https://microanalytics.io/js/script.js"
           />

@@ -20,7 +20,7 @@ export default function Home({ works }) {
       </Head>
       <Grid>
         {works.map((work, index) => (
-          <Cell key={work.id} columns={2}>
+          <Cell columns={2} key={work.id}>
             <ImageLink href={`/work/${work.slug}`} title={work.title}>
               <BoxShadow>
                 <ThumbnailImage

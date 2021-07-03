@@ -20,7 +20,7 @@ export default function Work({ work }) {
       {hasImages && (
         <Grid>
           {work.images.map((image, index) => (
-            <Cell key={image.id} columns={3}>
+            <Cell columns={3} key={image.id}>
               <BoxShadow>
                 <GalleryImage
                   alt={work.title}
@@ -53,10 +53,10 @@ export default function Work({ work }) {
         </Grid>
       )}
       <Details
+        isRightAligned
         date={work.published}
         dimensions={work.dimensions}
         medium={work.medium}
-        right
         title={work.title}
       />
     </>

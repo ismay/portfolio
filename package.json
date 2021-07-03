@@ -93,10 +93,52 @@
       "prettier"
     ],
     "rules": {
+      "import/extensions": [
+        "error",
+        "never"
+      ],
+      "import/no-duplicates": "error",
+      "import/no-absolute-path": "error",
+      "import/no-self-import": "error",
+      "import/no-cycle": "error",
+      "import/no-useless-path-segments": "error",
       "jsx-a11y/anchor-is-valid": "off",
+      "react/jsx-handler-names": "error",
+      "react/no-unused-prop-types": "error",
+      "react/default-props-match-prop-types": "error",
+      "react/jsx-boolean-value": "error",
+      "react/no-multi-comp": "error",
+      "react/jsx-no-undef": "error",
+      "react/jsx-curly-brace-presence": "error",
+      "react/jsx-fragments": "error",
+      "react/jsx-pascal-case": "error",
+      "react/jsx-no-useless-fragment": "error",
+      "react/no-unstable-nested-components": "error",
+      "react/destructuring-assignment": [
+        "error",
+        "always"
+      ],
+      "react/boolean-prop-naming": [
+        "error",
+        {
+          "validateNested": true
+        }
+      ],
+      "react/function-component-definition": [
+        "error",
+        {
+          "namedComponents": "function-declaration"
+        }
+      ],
       "react/jsx-filename-extension": "off",
       "react/react-in-jsx-scope": "off",
-      "react/jsx-sort-props": "warn"
+      "react/jsx-sort-props": [
+        "warn",
+        {
+          "shorthandFirst": true,
+          "callbacksLast": true
+        }
+      ]
     },
     "ignorePatterns": [
       "!.cypress/",
@@ -109,6 +151,14 @@
           "*.stories.js"
         ],
         "rules": {
+          "react/function-component-definition": [
+            "error",
+            {
+              "namedComponents": "arrow-function",
+              "unnamedComponents": "arrow-function"
+            }
+          ],
+          "react/no-multi-comp": "off",
           "react/jsx-props-no-spreading": "off",
           "import/no-extraneous-dependencies": "off",
           "@next/next/no-img-element": "off"

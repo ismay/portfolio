@@ -2,8 +2,14 @@ import c from "classnames";
 import T from "prop-types";
 import s from "./details.module.css";
 
-export default function Details({ date, dimensions, medium, right, title }) {
-  const containerClass = c(s.container, { [s.containerRight]: right });
+export default function Details({
+  date,
+  dimensions,
+  isRightAligned,
+  medium,
+  title,
+}) {
+  const containerClass = c(s.container, { [s.containerRight]: isRightAligned });
 
   /**
    * Graphcms returns an ISO 8601 date, formatted YYYY-MM-DD
@@ -25,14 +31,14 @@ export default function Details({ date, dimensions, medium, right, title }) {
 
 Details.defaultProps = {
   dimensions: "",
+  isRightAligned: false,
   medium: "",
-  right: false,
 };
 
 Details.propTypes = {
   date: T.string.isRequired,
   dimensions: T.string,
+  isRightAligned: T.bool,
   medium: T.string,
-  right: T.bool,
   title: T.string.isRequired,
 };
