@@ -2,14 +2,12 @@
 
 const { RelativeCiAgentWebpackPlugin } = require("@relative-ci/agent");
 
+const shouldAnalyze = process.env.ANALYZE_BUNDLE === "enabled";
+
 const webpack = (config, options) => {
-  const isEnabled = process.env.ANALYZE_BUNDLE === "enabled";
   const { isServer } = options;
 
-  // Only analyze the client bundle
-  const shouldAnalyze = !isServer && isEnabled;
-
-  if (shouldAnalyze) {
+  if (shouldAnalyze && !isServer) {
     config.plugins.push(new RelativeCiAgentWebpackPlugin());
   }
 
@@ -20,6 +18,7 @@ module.exports = {
   images: {
     domains: ["media.graphcms.com"],
   },
+  productionBrowserSourceMaps: true,
   reactStrictMode: true,
   webpack,
 };
