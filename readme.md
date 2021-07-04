@@ -6,7 +6,6 @@
 
 - `API_TOKEN`: the Graphcms token.
 - `API_URL`: the Graphcms url.
-- `HONEYBADGER_API_KEY`: used for uploading sourcemaps after the build.
 - `NEXT_PUBLIC_API_MOCKING`: set to either `enabled` or `disabled`.
 
 ### Used only in workflows

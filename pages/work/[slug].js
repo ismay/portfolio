@@ -163,7 +163,7 @@ export async function getStaticProps({ params }) {
       // eslint-disable-next-line no-param-reassign
       image.placeholderDataUrl = placeholderDataUrl;
     } catch (e) {
-      // Currently swallows any errors, this should be tracked
+      // It's ok if this fails
     }
   }
 
