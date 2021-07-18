@@ -6,6 +6,7 @@ import BoxShadow from "../../components/box-shadow";
 import Details from "../../components/details";
 import { Cell, Grid } from "../../components/grid";
 import { GalleryImage } from "../../components/image";
+import ImageLink from "../../components/image-link";
 import Vimeo from "../../components/vimeo";
 
 export default function Work({ work }) {
@@ -22,15 +23,17 @@ export default function Work({ work }) {
           {work.images.map((image, index) => (
             <Cell columns={3} key={image.id}>
               <BoxShadow>
-                <GalleryImage
-                  alt={work.title}
-                  amount={work.images.length}
-                  blurDataURL={image.placeholderDataUrl}
-                  height={image.height}
-                  index={index}
-                  src={image.url}
-                  width={image.width}
-                />
+                <ImageLink href={image.url} title={work.title}>
+                  <GalleryImage
+                    alt={work.title}
+                    amount={work.images.length}
+                    blurDataURL={image.placeholderDataUrl}
+                    height={image.height}
+                    index={index}
+                    src={image.url}
+                    width={image.width}
+                  />
+                </ImageLink>
               </BoxShadow>
             </Cell>
           ))}
