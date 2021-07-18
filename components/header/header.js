@@ -6,11 +6,13 @@ import s from "./header.module.css";
 export default function Header() {
   return (
     <header className={s.container}>
-      <Link href="/">
-        <a className={s.link} title="Superwolff">
-          <Logo />
-        </a>
-      </Link>
+      <h1 className={s.heading}>
+        <Link href="/">
+          <a className={s.link} title="Superwolff">
+            <Logo />
+          </a>
+        </Link>
+      </h1>
       <Navigation />
     </header>
   );

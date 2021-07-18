@@ -7,6 +7,7 @@ const links = [
 describe("about", () => {
   it("renders as expected", () => {
     cy.visit("/about");
+    cy.injectAxe();
 
     // Ensure expected links are all present
     links.forEach(({ href, name }) => {
@@ -15,6 +16,7 @@ describe("about", () => {
         .and("be.visible");
     });
 
+    cy.checkA11y();
     cy.percySnapshot("about page renders as expected");
   });
 });

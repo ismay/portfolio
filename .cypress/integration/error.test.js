@@ -7,6 +7,7 @@ const links = [
 describe("error", () => {
   it("renders as expected", () => {
     cy.visit("/should-not-exist", { failOnStatusCode: false });
+    cy.injectAxe();
 
     // Ensure the appropriate status code
     cy.request({
@@ -24,6 +25,7 @@ describe("error", () => {
         .and("be.visible");
     });
 
+    cy.checkA11y();
     cy.percySnapshot("error page renders as expected");
   });
 });

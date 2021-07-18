@@ -10,6 +10,7 @@ const links = [
 describe("home", () => {
   it("renders as expected", () => {
     cy.visit("/");
+    cy.injectAxe();
 
     // Ensure expected links are all present
     links.forEach(({ href, name }) => {
@@ -18,6 +19,7 @@ describe("home", () => {
         .and("be.visible");
     });
 
+    cy.checkA11y();
     cy.percySnapshot("home page renders as expected");
   });
 });
