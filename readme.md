@@ -6,6 +6,7 @@
 
 - `API_TOKEN`: the Graphcms token.
 - `API_URL`: the Graphcms url.
+- `HUSKY`: for disabling husky during vercel installs.
 - `NEXT_PUBLIC_API_MOCKING`: set to either `enabled` or `disabled`.
 
 ### Used only in workflows
