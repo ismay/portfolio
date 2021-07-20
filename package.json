@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@cloudfour/simple-svg-placeholder": "^1.0.2",
-    "@percy/cli": "^1.0.0-beta.58",
+    "@percy/cli": "^1.0.0-beta.59",
     "@percy/cypress": "^3.1.0",
     "@storybook/addon-essentials": "^6.3.4",
     "@storybook/addon-links": "^6.3.4",
