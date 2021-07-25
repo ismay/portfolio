@@ -2,6 +2,12 @@ const links = [
   { href: "/", name: "Superwolff" },
   { href: "/", name: "Work" },
   { href: "/about", name: "About" },
+  { href: "mailto:superwolff@superwolff.nl", name: "Email me" },
+  { href: "https://mastodon.art/@superwolff", name: "Follow me on Mastodon" },
+  {
+    href: "https://theartling.com/en/print-artists/superwolff",
+    name: "Buy prints at The Artling",
+  },
 ];
 
 describe("about", () => {
