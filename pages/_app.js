@@ -3,6 +3,7 @@
 import "../styles/globals.css";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Footer from "../components/footer";
 import Header from "../components/header";
 import LoadingIndicator from "../components/loading-indicator";
 import Main from "../components/main";
@@ -41,6 +42,7 @@ export default function CustomApp({ Component, pageProps }) {
       <Main>
         <Component {...pageProps} />
       </Main>
+      <Footer />
       <LoadingIndicator isLoading={isLoading} />
     </Page>
   );
