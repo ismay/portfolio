@@ -8,7 +8,7 @@ concurrency:
 
 jobs:
   deploy:
-    if: github.repository_owner == 'ismay' && github.actor != 'dependabot[bot]'
+    if: github.repository_owner == 'ismay'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

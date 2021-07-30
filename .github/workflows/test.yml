@@ -17,7 +17,7 @@ jobs:
       - run: npm run test:unit
 
   e2e:
-    if: github.repository_owner == 'ismay' && github.actor != 'dependabot[bot]'
+    if: github.repository_owner == 'ismay'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
