@@ -64,6 +64,11 @@
     "stylelint-order": "4.1.0",
     "wait-on": "6.0.0"
   },
+  "renovate": {
+    "extends": [
+      "config:base"
+    ]
+  },
   "babel": {
     "presets": [
       "next/babel"
