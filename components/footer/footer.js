@@ -12,6 +12,14 @@ export default function Footer() {
       </a>
       <a
         className={s.link}
+        href="https://post.lurk.org/@superwolff"
+        rel="me"
+        title="Follow me on Mastodon"
+      >
+        Mastodon
+      </a>
+      <a
+        className={s.link}
         href="https://theartling.com/en/print-artists/superwolff"
         title="Buy prints at The Artling"
       >

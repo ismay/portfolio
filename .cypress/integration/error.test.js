@@ -1,14 +1,3 @@
-const links = [
-  { href: "/", name: "Superwolff" },
-  { href: "/", name: "Work" },
-  { href: "/about", name: "About" },
-  { href: "mailto:superwolff@superwolff.nl", name: "Email me" },
-  {
-    href: "https://theartling.com/en/print-artists/superwolff",
-    name: "Buy prints at The Artling",
-  },
-];
-
 describe("error", () => {
   it("renders as expected", () => {
     cy.visit("/should-not-exist", { failOnStatusCode: false });
@@ -21,13 +10,6 @@ describe("error", () => {
       url: "/should-not-exist",
     }).then((response) => {
       expect(response.status).to.eq(404);
-    });
-
-    // Ensure expected links are all present
-    links.forEach(({ href, name }) => {
-      cy.findByRole("link", { name })
-        .should("have.attr", "href", href)
-        .and("be.visible");
     });
 
     cy.checkA11y();
