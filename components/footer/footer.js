@@ -10,6 +10,14 @@ export default function Footer() {
       >
         Email
       </a>
+
+      <a
+        className={s.link}
+        href="https://tinyletter.com/superwolff"
+        title="Subscribe to my newsletter"
+      >
+        Newsletter
+      </a>
       <a
         className={s.link}
         href="https://post.lurk.org/@superwolff"
