@@ -17,13 +17,6 @@ class CustomDocument extends Document {
             sizes="32x32"
             type="image/png"
           />
-          <script
-            defer
-            data-dnt="false"
-            data-host="https://microanalytics.io"
-            id="ZwSg9rf6GA"
-            src="https://microanalytics.io/js/script.js"
-          />
         </Head>
         <body>
           <Main />
