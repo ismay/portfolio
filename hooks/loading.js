@@ -22,7 +22,7 @@ export default function useLoading() {
       router.events.off("routeChangeComplete", handleRouteChangeEnd);
       router.events.off("routeChangeError", handleRouteChangeEnd);
     };
-  });
+  }, [router.events]);
 
   return isLoading;
 }
