@@ -8,6 +8,7 @@ export default function GalleryImage({
   blurDataURL,
   height,
   index,
+  overrideSizes,
   src,
   width,
 }) {
@@ -20,7 +21,7 @@ export default function GalleryImage({
       height={height}
       layout="responsive"
       placeholder={blurDataURL ? "blur" : undefined}
-      sizes={sizes}
+      sizes={overrideSizes ? `${overrideSizes}px` : sizes}
       src={src}
       width={width}
     />
@@ -29,6 +30,7 @@ export default function GalleryImage({
 
 GalleryImage.defaultProps = {
   blurDataURL: "",
+  overrideSizes: 0,
 };
 
 GalleryImage.propTypes = {
@@ -37,6 +39,7 @@ GalleryImage.propTypes = {
   blurDataURL: T.string,
   height: T.number.isRequired,
   index: T.number.isRequired,
+  overrideSizes: T.number,
   src: T.string.isRequired,
   width: T.number.isRequired,
 };

@@ -5,8 +5,7 @@ import client, { imageUrlToDataUrl } from "../../client";
 import BoxShadow from "../../components/box-shadow";
 import Details from "../../components/details";
 import { Cell, Grid } from "../../components/grid";
-import { GalleryImage } from "../../components/image";
-import ImageLink from "../../components/image-link";
+import ImageZoom from "../../components/image-zoom";
 import Vimeo from "../../components/vimeo";
 
 export default function Work({ work }) {
@@ -22,19 +21,16 @@ export default function Work({ work }) {
         <Grid>
           {work.images.map((image, index) => (
             <Cell columns={3} key={image.id}>
-              <BoxShadow>
-                <ImageLink href={image.url} title={work.title}>
-                  <GalleryImage
-                    alt={work.title}
-                    amount={work.images.length}
-                    blurDataURL={image.placeholderDataUrl}
-                    height={image.height}
-                    index={index}
-                    src={image.url}
-                    width={image.width}
-                  />
-                </ImageLink>
-              </BoxShadow>
+              <ImageZoom
+                alt={work.title}
+                amount={work.images.length}
+                blurDataURL={image.placeholderDataUrl}
+                height={image.height}
+                index={index}
+                margin={25}
+                src={image.url}
+                width={image.width}
+              />
             </Cell>
           ))}
         </Grid>
