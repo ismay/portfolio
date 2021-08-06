@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@panelbear/panelbear-js": "1.2.0",
-    "@react-hook/debounce": "^4.0.0",
+    "@react-hook/debounce": "4.0.0",
     "@react-hook/passive-layout-effect": "1.2.1",
     "@react-hook/previous": "1.0.1",
     "classnames": "2.3.1",
