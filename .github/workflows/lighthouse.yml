@@ -38,6 +38,7 @@ jobs:
       - uses: treosh/lighthouse-ci-action@8.0.0
         with:
           urls: ${{ needs.vercel.outputs.url }}
+          budgetPath: ".github/budget.json"
           temporaryPublicStorage: true
         env:
           LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
