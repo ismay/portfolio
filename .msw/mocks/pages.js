@@ -1,4 +1,4 @@
-const mdx = `
+const content = `
 ## About
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet volutpat eros, in iaculis quam varius nec. Suspendisse a egestas magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -7,6 +7,6 @@ Donec et pretium mauris. Etiam vitae nisl pulvinar, congue massa nec, mattis mi.
 `;
 
 export const about = {
-  mdx,
+  content,
   title: "About",
 };
