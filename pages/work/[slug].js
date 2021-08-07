@@ -1,4 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading, react/forbid-prop-types */
+
 import { gql } from "graphql-request";
+import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import T from "prop-types";
 import client, { imageUrlToDataUrl } from "../../client";
@@ -11,6 +15,7 @@ import Vimeo from "../../components/vimeo";
 export default function Work({ work }) {
   const hasVideos = work.videos.length > 0;
   const hasImages = work.images.length > 0;
+  const hasDescription = !!work.description;
 
   return (
     <>
@@ -58,12 +63,14 @@ export default function Work({ work }) {
         medium={work.medium}
         title={work.title}
       />
+      {hasDescription && <MDXRemote {...work.description} />}
     </>
   );
 }
 
 Work.propTypes = {
   work: T.shape({
+    description: T.object,
     dimensions: T.string,
     images: T.arrayOf(
       T.shape({
@@ -112,6 +119,7 @@ export async function getStaticProps({ params }) {
           title
           published
           medium
+          description
           dimensions
           images {
             id
@@ -164,6 +172,12 @@ export async function getStaticProps({ params }) {
     } catch (e) {
       // It's ok if this fails
     }
+  }
+
+  // Parse description markdown, if it exists
+  if (work.description) {
+    const description = await serialize(work.description);
+    work.description = description;
   }
 
   return {

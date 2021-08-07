@@ -1,4 +1,11 @@
+const description = `
+## Title
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet volutpat eros, in iaculis quam varius nec. Suspendisse a egestas magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+`;
+
 export const one = {
+  description,
   dimensions: "100 x 100 cm",
   id: "1",
   images: [
@@ -42,6 +49,7 @@ export const one = {
 };
 
 export const two = {
+  description,
   dimensions: "100 x 100 cm",
   id: "2",
   images: [
@@ -85,6 +93,7 @@ export const two = {
 };
 
 export const three = {
+  description,
   dimensions: "100 x 100 cm",
   id: "3",
   images: [
