@@ -6,7 +6,7 @@ export default {
   component: ImageZoom,
   decorators: [
     (Story) => (
-      <div style={{ maxWidth: "250px", padding: "25px" }}>
+      <div style={{ maxWidth: "250px" }}>
         <Story />
       </div>
     ),

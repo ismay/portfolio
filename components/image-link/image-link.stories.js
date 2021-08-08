@@ -4,6 +4,9 @@ import ImageLink from "./image-link";
 
 export default {
   component: ImageLink,
+  parameters: {
+    layout: "centered",
+  },
   title: "ImageLink",
 };
 

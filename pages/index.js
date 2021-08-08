@@ -4,6 +4,7 @@ import T from "prop-types";
 import client, { imageUrlToDataUrl } from "../client";
 import BoxShadow from "../components/box-shadow";
 import Details from "../components/details";
+import Glitch from "../components/glitch";
 import { Cell, Grid } from "../components/grid";
 import { ThumbnailImage } from "../components/image";
 import ImageLink from "../components/image-link";
@@ -21,20 +22,22 @@ export default function Home({ works }) {
       <Grid>
         {works.map((work, index) => (
           <Cell columns={2} key={work.id}>
-            <ImageLink href={`/work/${work.slug}`} title={work.title}>
-              <BoxShadow>
-                <ThumbnailImage
-                  alt={work.title}
-                  amount={works.length}
-                  blurDataURL={work.thumbnail.placeholderDataUrl}
-                  height={work.thumbnail.height}
-                  index={index}
-                  src={work.thumbnail.url}
-                  width={work.thumbnail.width}
-                />
-              </BoxShadow>
-              <Details date={work.published} title={work.title} />
-            </ImageLink>
+            <Glitch>
+              <ImageLink href={`/work/${work.slug}`} title={work.title}>
+                <BoxShadow>
+                  <ThumbnailImage
+                    alt={work.title}
+                    amount={works.length}
+                    blurDataURL={work.thumbnail.placeholderDataUrl}
+                    height={work.thumbnail.height}
+                    index={index}
+                    src={work.thumbnail.url}
+                    width={work.thumbnail.width}
+                  />
+                </BoxShadow>
+                <Details date={work.published} title={work.title} />
+              </ImageLink>
+            </Glitch>
           </Cell>
         ))}
       </Grid>

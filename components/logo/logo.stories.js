@@ -5,6 +5,7 @@ export default {
   component: Logo,
   parameters: {
     controls: { hideNoControlsWarning: true },
+    layout: "centered",
   },
   title: "Logo",
 };

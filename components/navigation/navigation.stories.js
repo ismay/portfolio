@@ -5,6 +5,7 @@ export default {
   component: Navigation,
   parameters: {
     controls: { hideNoControlsWarning: true },
+    layout: "centered",
   },
   title: "Navigation",
 };

@@ -1,0 +1,10 @@
+.container {
+  transition: all 1000ms;
+}
+
+.container:hover,
+.container:active,
+.container:focus,
+.container:focus-within {
+  filter: hue-rotate(360deg) contrast(150%) saturate(250%) brightness(150%);
+}
