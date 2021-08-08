@@ -1,5 +1,5 @@
 .container {
-  transition: all 1000ms;
+  transition: filter 1000ms;
 }
 
 .container:hover,
