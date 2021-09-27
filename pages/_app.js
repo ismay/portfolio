@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types, react/jsx-props-no-spreading, global-require */
 
 import "../styles/globals.css";
+import { usePanelbear } from "@panelbear/panelbear-nextjs";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import LoadingIndicator from "../components/loading-indicator";
 import Main from "../components/main";
 import Page from "../components/page";
 import useLoading from "../hooks/loading";
-import usePanelbear from "../hooks/panelbear";
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
   require("../.msw");
