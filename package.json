@@ -61,7 +61,7 @@
     "msw": "0.35.0",
     "prettier": "2.4.1",
     "rimraf": "3.0.2",
-    "stylelint": "13.13.1",
+    "stylelint": "14.0.1",
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "22.0.0",
     "stylelint-order": "4.1.0",
