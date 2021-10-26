@@ -57,7 +57,7 @@
     "husky": "7.0.2",
     "jest": "27.3.1",
     "kill-port": "1.6.1",
-    "lint-staged": "11.2.3",
+    "lint-staged": "11.2.6",
     "msw": "0.35.0",
     "prettier": "2.4.1",
     "rimraf": "3.0.2",
