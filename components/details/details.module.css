@@ -4,7 +4,7 @@
   text-size-adjust: 100%;
 }
 
-.titleDateContainer {
+.title-date-container {
   display: flex;
 }
 
@@ -24,10 +24,10 @@
  * Right aligned
  */
 
-.containerRight {
+.container-right {
   text-align: right;
 }
 
-.containerRight .title {
+.container-right .title {
   flex: 1;
 }

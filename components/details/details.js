@@ -9,7 +9,9 @@ export default function Details({
   medium,
   title,
 }) {
-  const containerClass = c(s.container, { [s.containerRight]: isRightAligned });
+  const containerClass = c(s.container, {
+    [s["container-right"]]: isRightAligned,
+  });
 
   /**
    * Graphcms returns an ISO 8601 date, formatted YYYY-MM-DD
@@ -19,7 +21,7 @@ export default function Details({
 
   return (
     <div className={containerClass}>
-      <div className={s.titleDateContainer}>
+      <div className={s["title-date-container"]}>
         <span className={s.title}>{title}</span>
         <span className={s.date}>, {year}</span>
       </div>
