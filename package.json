@@ -39,7 +39,7 @@
     "@storybook/manager-webpack5": "6.3.12",
     "@storybook/react": "6.3.12",
     "@testing-library/cypress": "8.0.1",
-    "axe-core": "4.3.3",
+    "axe-core": "4.3.4",
     "cypress": "8.7.0",
     "cypress-axe": "0.13.0",
     "eslint": "7.32.0",
