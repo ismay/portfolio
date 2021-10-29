@@ -12,5 +12,6 @@ module.exports = {
     builder: "webpack5",
   },
   stories: ["../components/**/*.stories.js"],
+  typescript: { reactDocgen: false },
   webpackFinal: applyMocks,
 };
