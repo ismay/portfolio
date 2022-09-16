@@ -20,7 +20,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         with:
           vercel_team_id: ismaywolff
-          vercel_project_id: superwolff
+          vercel_project_id: portfolio
       - uses: unlyed/github-action-await-vercel@v1.2.14
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
