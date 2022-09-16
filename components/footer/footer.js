@@ -21,7 +21,6 @@ export default function Footer() {
       <a
         className={s.link}
         href="https://post.lurk.org/@superwolff"
-        rel="me"
         title="Follow me on Mastodon"
       >
         Mastodon
