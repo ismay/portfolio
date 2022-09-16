@@ -49,7 +49,6 @@
     "eslint-plugin-jest": "25.2.2",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.26.1",
-    "eslint-plugin-react-hooks": "4.2.0",
     "eslint-plugin-sort": "1.5.0",
     "graphql": "15.0.0",
     "husky": "7.0.4",
@@ -94,7 +93,6 @@
     "extends": [
       "next",
       "airbnb",
-      "airbnb/hooks",
       "plugin:sort/recommended",
       "plugin:jest/recommended",
       "plugin:cypress/recommended",
