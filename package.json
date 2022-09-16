@@ -1,5 +1,5 @@
 {
-  "name": "superwolff",
+  "name": "portfolio",
   "private": true,
   "scripts": {
     "prebuild": "rimraf public/_images",
