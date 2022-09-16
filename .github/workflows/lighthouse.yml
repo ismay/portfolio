@@ -1,4 +1,4 @@
-name: Lighthouse
+name: lighthouse
 
 on: [push]
 
