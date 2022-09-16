@@ -65,7 +65,7 @@ h6 {
 /* Inherit text color for links */
 
 a {
-  color: currentColor;
+  color: currentcolor;
 }
 
 /* Style image alt text */

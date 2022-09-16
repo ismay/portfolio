@@ -3,14 +3,14 @@
   bottom: 0;
   cursor: auto;
   left: 0;
-  opacity: 0%;
+  opacity: 0;
   pointer-events: none;
   position: fixed;
   right: 0;
   top: 0;
-  transition-duration: var(--transitionDuration);
+  transition-duration: var(--transition-duration);
   transition-property: opacity;
-  transition-timing-function: var(--transitionTimingFunction);
+  transition-timing-function: var(--transition-timing-function);
   z-index: auto;
 }
 
@@ -20,7 +20,7 @@
 
 .zoomed {
   cursor: zoom-out;
-  opacity: 100%;
+  opacity: 1;
   pointer-events: auto;
   z-index: 1;
 }

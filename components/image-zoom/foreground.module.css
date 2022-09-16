@@ -1,8 +1,8 @@
 .unzoomed {
   cursor: zoom-in;
-  transition-duration: var(--transitionDuration);
+  transition-duration: var(--transition-duration);
   transition-property: transform;
-  transition-timing-function: var(--transitionTimingFunction);
+  transition-timing-function: var(--transition-timing-function);
 }
 
 .unzooming {
