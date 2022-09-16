@@ -21,8 +21,8 @@ export default function ImageZoom({
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomedSize, setZoomedSize] = useState(0);
   const style = {
-    "--transitionDuration": "300ms",
-    "--transitionTimingFunction": "ease-in-out",
+    "--transition-duration": "300ms",
+    "--transition-timing-function": "ease-in-out",
   };
 
   // Allow retrieving the base size from within a child component
