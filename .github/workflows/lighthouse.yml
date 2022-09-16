@@ -35,7 +35,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v2
-      - uses: treosh/lighthouse-ci-action@8.0.0
+      - uses: treosh/lighthouse-ci-action@9.3.0
         with:
           urls: ${{ needs.vercel.outputs.url }}
           budgetPath: ".github/budget.json"
