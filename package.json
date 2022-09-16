@@ -146,7 +146,8 @@
           "shorthandFirst": true,
           "callbacksLast": true
         }
-      ]
+      ],
+      "sort/exports": "off"
     },
     "ignorePatterns": [
       "!.cypress/",
