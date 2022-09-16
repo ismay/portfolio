@@ -26,7 +26,7 @@ jobs:
         with:
           start: npm run dev
           wait-on: "npx wait-on -s 1 http://localhost:3000"
-          config-file: .cypress/cypress.json
+          config-file: .cypress/cypress.config.js
           command-prefix: "percy exec -- npx"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
