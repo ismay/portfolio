@@ -69,7 +69,8 @@
   "renovate": {
     "extends": [
       "config:base"
-    ]
+    ],
+    "dependencyDashboardApproval": true
   },
   "babel": {
     "presets": [
