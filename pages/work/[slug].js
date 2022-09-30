@@ -16,11 +16,12 @@ export default function Work({ work }) {
   const hasVideos = work.videos.length > 0;
   const hasImages = work.images.length > 0;
   const hasDescription = !!work.description;
+  const title = `${work.title} - Superwolff`;
 
   return (
     <>
       <Head>
-        <title>{work.title} - Superwolff</title>
+        <title>{title}</title>
       </Head>
       {hasImages && (
         <Grid>
