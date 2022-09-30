@@ -70,8 +70,7 @@
     "extends": [
       "config:js-app",
       ":dependencyDashboardApproval",
-      ":enableVulnerabilityAlerts",
-      ":automergeMinor"
+      ":enableVulnerabilityAlerts"
     ]
   },
   "babel": {
