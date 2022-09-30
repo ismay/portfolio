@@ -18,9 +18,15 @@
 - `PERCY_TOKEN`
 - `VERCEL_TOKEN`
 
-### During installation
+### Services
 
-- `HUSKY`
+- [chromatic](https://www.chromatic.com)
+- [hygraph](https://hygraph.com)
+- [lighthouse](https://github.com/GoogleChrome/lighthouse-ci)
+- [panelbear](https://panelbear.com)
+- [percy](https://percy.io)
+- [renovate](https://docs.renovatebot.com)
+- [vercel](https://vercel.com)
 
 ## Browserstack
 
