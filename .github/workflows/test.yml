@@ -31,3 +31,4 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           NODE_ENV: "test"
+          HUSKY: 0

@@ -18,6 +18,10 @@
 - `PERCY_TOKEN`
 - `VERCEL_TOKEN`
 
+### During installation
+
+- `HUSKY`
+
 ## Browserstack
 
 Percy visual regression testing courtesy of [Browserstack](https://www.browserstack.com/open-source)
