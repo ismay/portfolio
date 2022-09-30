@@ -68,12 +68,11 @@
   },
   "renovate": {
     "extends": [
-      "config:base",
+      "config:js-app",
       ":dependencyDashboardApproval",
       ":enableVulnerabilityAlerts",
       ":automergeMinor"
-    ],
-    "rangeStrategy": "update-lockfile"
+    ]
   },
   "babel": {
     "presets": [
