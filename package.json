@@ -57,7 +57,7 @@
     "jest-environment-jsdom": "29.1.2",
     "kill-port": "2.0.1",
     "lint-staged": "13.0.3",
-    "msw": "0.35.0",
+    "msw": "0.47.3",
     "prettier": "2.7.1",
     "rimraf": "3.0.2",
     "stylelint": "14.13.0",
