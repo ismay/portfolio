@@ -6,7 +6,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet volutpa
 
 export const one = {
   description,
-  dimensions: "100 x 100 cm",
   id: "1",
   images: [
     {
@@ -34,7 +33,6 @@ export const one = {
       width: 1500,
     },
   ],
-  medium: "Inkjet print",
   published: "2020-01-01",
   slug: "one",
   thumbnail: {
@@ -50,7 +48,6 @@ export const one = {
 
 export const two = {
   description,
-  dimensions: "100 x 100 cm",
   id: "2",
   images: [
     {
@@ -78,7 +75,6 @@ export const two = {
       width: 927,
     },
   ],
-  medium: "Inkjet print",
   published: "2020-02-02",
   slug: "two",
   thumbnail: {
@@ -94,7 +90,6 @@ export const two = {
 
 export const three = {
   description,
-  dimensions: "100 x 100 cm",
   id: "3",
   images: [
     {
@@ -122,7 +117,6 @@ export const three = {
       width: 1500,
     },
   ],
-  medium: "Inkjet print",
   published: "2020-03-03",
   slug: "three",
   thumbnail: {
