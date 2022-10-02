@@ -2,7 +2,6 @@
 
 import "../styles/globals.css";
 import { usePanelbear } from "@panelbear/panelbear-nextjs";
-import Footer from "../components/footer";
 import Header from "../components/header";
 import LoadingIndicator from "../components/loading-indicator";
 import Main from "../components/main";
@@ -23,7 +22,6 @@ export default function CustomApp({ Component, pageProps }) {
       <Main>
         <Component {...pageProps} />
       </Main>
-      <Footer />
       <LoadingIndicator isLoading={isLoading} />
     </Page>
   );
