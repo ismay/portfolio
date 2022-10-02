@@ -57,13 +57,7 @@ export default function Work({ work }) {
           ))}
         </Grid>
       )}
-      <Details
-        isRightAligned
-        date={work.published}
-        dimensions={work.dimensions}
-        medium={work.medium}
-        title={work.title}
-      />
+      <Details isRightAligned date={work.published} title={work.title} />
       {hasDescription && <MDXRemote {...work.description} />}
     </>
   );
@@ -72,7 +66,6 @@ export default function Work({ work }) {
 Work.propTypes = {
   work: T.shape({
     description: T.object,
-    dimensions: T.string,
     images: T.arrayOf(
       T.shape({
         height: T.number.isRequired,
@@ -82,7 +75,6 @@ Work.propTypes = {
         width: T.number.isRequired,
       })
     ).isRequired,
-    medium: T.string,
     published: T.string.isRequired,
     title: T.string.isRequired,
     videos: T.arrayOf(
@@ -119,9 +111,7 @@ export async function getStaticProps({ params }) {
         work(where: { slug: $slug }) {
           title
           published
-          medium
           description
-          dimensions
           images {
             id
             url

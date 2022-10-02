@@ -2,13 +2,7 @@ import c from "classnames";
 import T from "prop-types";
 import s from "./details.module.css";
 
-export default function Details({
-  date,
-  dimensions,
-  isRightAligned,
-  medium,
-  title,
-}) {
+export default function Details({ date, isRightAligned, title }) {
   const containerClass = c(s.container, {
     [s["container-right"]]: isRightAligned,
   });
@@ -21,26 +15,18 @@ export default function Details({
 
   return (
     <div className={containerClass}>
-      <div className={s["title-date-container"]}>
-        <span className={s.title}>{title}</span>
-        <span className={s.date}>, {year}</span>
-      </div>
-      {medium && <div>{medium}</div>}
-      {dimensions && <div>{dimensions}</div>}
+      <span className={s.title}>{title}</span>
+      <span className={s.date}>, {year}</span>
     </div>
   );
 }
 
 Details.defaultProps = {
-  dimensions: "",
   isRightAligned: false,
-  medium: "",
 };
 
 Details.propTypes = {
   date: T.string.isRequired,
-  dimensions: T.string,
   isRightAligned: T.bool,
-  medium: T.string,
   title: T.string.isRequired,
 };
