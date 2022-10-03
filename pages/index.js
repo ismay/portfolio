@@ -1,5 +1,6 @@
 import { gql } from "graphql-request";
 import Head from "next/head";
+import pMap from "p-map";
 import T from "prop-types";
 import client, { imageUrlToDataUrl } from "../client";
 import BoxShadow from "../components/box-shadow";
@@ -83,26 +84,19 @@ export async function getStaticProps() {
   `);
 
   /**
-   * Fetch all image placeholders, convert to base64 and add to the work. This
-   * currently runs serially, but can be easily modified to run in parallel if
-   * necessary.
+   * Fetch all image placeholders, convert to base64 and add to the work.
    */
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const work of works) {
-    try {
-      // eslint-disable-next-line no-await-in-loop
-      const placeholderDataUrl = await imageUrlToDataUrl(
-        work.thumbnail.placeholderUrl,
-        work.thumbnail.mimeType
-      );
+  const addPlaceholder = async (work) => {
+    const placeholderDataUrl = await imageUrlToDataUrl(
+      work.thumbnail.placeholderUrl
+    );
+    const currentWork = work;
 
-      // eslint-disable-next-line no-param-reassign
-      work.thumbnail.placeholderDataUrl = placeholderDataUrl;
-    } catch (e) {
-      // It's ok if this fails
-    }
-  }
+    currentWork.thumbnail.placeholderDataUrl = placeholderDataUrl;
+  };
+
+  await pMap(works, addPlaceholder, { concurrency: 4 });
 
   return {
     props: { works },

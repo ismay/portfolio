@@ -4,6 +4,7 @@ import { gql } from "graphql-request";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
+import pMap from "p-map";
 import T from "prop-types";
 import client, { imageUrlToDataUrl } from "../../client";
 import BoxShadow from "../../components/box-shadow";
@@ -144,26 +145,17 @@ export async function getStaticProps({ params }) {
   }
 
   /**
-   * Fetch all image placeholders, convert to base64 and add to the work. This
-   * currently runs serially, but can be easily modified to run in parallel if
-   * necessary.
+   * Fetch all image placeholders, convert to base64 and add to the work.
    */
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const image of work.images) {
-    try {
-      // eslint-disable-next-line no-await-in-loop
-      const placeholderDataUrl = await imageUrlToDataUrl(
-        image.placeholderUrl,
-        image.mimeType
-      );
+  const addPlaceholder = async (image) => {
+    const placeholderDataUrl = await imageUrlToDataUrl(image.placeholderUrl);
+    const currentImage = image;
 
-      // eslint-disable-next-line no-param-reassign
-      image.placeholderDataUrl = placeholderDataUrl;
-    } catch (e) {
-      // It's ok if this fails
-    }
-  }
+    currentImage.placeholderDataUrl = placeholderDataUrl;
+  };
+
+  await pMap(work.images, addPlaceholder, { concurrency: 4 });
 
   // Parse description markdown, if it exists
   if (work.description) {
