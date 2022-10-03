@@ -64,7 +64,7 @@ Home.propTypes = {
 export async function getStaticProps() {
   const { works } = await client.request(gql`
     query getWorks {
-      works(orderBy: published_DESC) {
+      works(first: 50, orderBy: published_DESC) {
         id
         title
         slug
