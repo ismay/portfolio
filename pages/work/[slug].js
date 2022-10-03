@@ -5,8 +5,9 @@ import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import pMap from "p-map";
+import { getPlaiceholder } from "plaiceholder";
 import T from "prop-types";
-import client, { imageUrlToDataUrl } from "../../client";
+import client from "../../client";
 import BoxShadow from "../../components/box-shadow";
 import Details from "../../components/details";
 import { Cell, Grid } from "../../components/grid";
@@ -149,10 +150,10 @@ export async function getStaticProps({ params }) {
    */
 
   const addPlaceholder = async (image) => {
-    const placeholderDataUrl = await imageUrlToDataUrl(image.placeholderUrl);
+    const { base64 } = await getPlaiceholder(image.placeholderUrl);
     const currentImage = image;
 
-    currentImage.placeholderDataUrl = placeholderDataUrl;
+    currentImage.placeholderDataUrl = base64;
   };
 
   await pMap(work.images, addPlaceholder, { concurrency: 4 });
