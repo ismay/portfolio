@@ -1,11 +1,9 @@
-const imageUrlToDataUrl = async (url, mimeType) => {
-  // Fetch is automatically polyfilled server-side with next.js
-  const response = await fetch(url);
+import { getPlaiceholder } from "plaiceholder";
 
-  // A method unique to node-fetch, so this will only work server-side
-  const buffer = await response.buffer();
+const imageUrlToDataUrl = async (url) => {
+  const { base64 } = await getPlaiceholder(url);
 
-  return `data:${mimeType};base64,${buffer.toString("base64")}`;
+  return base64;
 };
 
 export default imageUrlToDataUrl;
