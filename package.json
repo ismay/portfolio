@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@panelbear/panelbear-nextjs": "1.0.4",
+    "@plaiceholder/next": "^2.5.0",
     "@react-hook/debounce": "4.0.0",
     "@react-hook/passive-layout-effect": "1.2.1",
     "@react-hook/previous": "1.0.1",
