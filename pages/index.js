@@ -1,8 +1,9 @@
 import { gql } from "graphql-request";
 import Head from "next/head";
 import pMap from "p-map";
+import { getPlaiceholder } from "plaiceholder";
 import T from "prop-types";
-import client, { imageUrlToDataUrl } from "../client";
+import client from "../client";
 import BoxShadow from "../components/box-shadow";
 import Details from "../components/details";
 import { Cell, Grid } from "../components/grid";
@@ -88,12 +89,10 @@ export async function getStaticProps() {
    */
 
   const addPlaceholder = async (work) => {
-    const placeholderDataUrl = await imageUrlToDataUrl(
-      work.thumbnail.placeholderUrl
-    );
+    const { base64 } = await getPlaiceholder(work.thumbnail.placeholderUrl);
     const currentWork = work;
 
-    currentWork.thumbnail.placeholderDataUrl = placeholderDataUrl;
+    currentWork.thumbnail.placeholderDataUrl = base64;
   };
 
   await pMap(works, addPlaceholder, { concurrency: 4 });
