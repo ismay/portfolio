@@ -69,6 +69,7 @@
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "28.0.0",
     "stylelint-order": "5.0.0",
+    "tree-cli": "^0.6.7",
     "wait-on": "6.0.1"
   },
   "renovate": {

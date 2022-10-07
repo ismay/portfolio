@@ -22,4 +22,5 @@ jobs:
         env:
           API_TOKEN: ${{ secrets.API_TOKEN }}
           API_URL: ${{ secrets.API_URL }}
+      - run: cd .next && npx tree -l 5 --ignore cache/ && cd ../
       - run: npx bundlemon
