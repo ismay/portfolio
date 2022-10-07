@@ -5,7 +5,7 @@ import BoxShadow from "./box-shadow";
 const Placeholder = () => (
   <img
     alt="Placeholder"
-    src={placeholderImage({ height: 400, width: 1500 })}
+    src={placeholderImage({ height: 400, width: 500 })}
     style={{ display: "block", maxWidth: "100%" }}
   />
 );

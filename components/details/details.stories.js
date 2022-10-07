@@ -9,12 +9,12 @@ export default {
 const Template = (args) => <Details {...args} />;
 
 /**
- * Minimal
+ * Default
  */
 
-export const Minimal = Template.bind({});
+export const Default = Template.bind({});
 
-Minimal.args = {
+Default.args = {
   date: "2010-01-01",
   title: "The Title",
 };
