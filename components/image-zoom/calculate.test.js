@@ -11,14 +11,10 @@ describe("calculateX", () => {
     global.innerHeight = 1000;
 
     const scale = 2;
-    const baseRect = {
-      height: 100,
-      left: 0,
-      top: 0,
-      width: 100,
-    };
+    const left = 0;
+    const width = 100;
 
-    const x = calculateX({ baseRect, scale });
+    const x = calculateX({ left, scale, width });
 
     expect(x).toBe(225);
   });
@@ -30,14 +26,10 @@ describe("calculateY", () => {
     global.innerHeight = 1000;
 
     const scale = 2;
-    const baseRect = {
-      height: 100,
-      left: 0,
-      top: 0,
-      width: 100,
-    };
+    const height = 100;
+    const top = 0;
 
-    const y = calculateY({ baseRect, scale });
+    const y = calculateY({ height, scale, top });
 
     expect(y).toBe(225);
   });
@@ -49,12 +41,10 @@ describe("calculateScale", () => {
     global.innerHeight = 1000;
 
     const margin = 0;
-    const baseRect = {
-      height: 100,
-      width: 100,
-    };
+    const height = 100;
+    const width = 100;
 
-    const scale = calculateScale({ baseRect, margin });
+    const scale = calculateScale({ height, margin, width });
 
     expect(scale).toBe(10);
   });
@@ -64,12 +54,10 @@ describe("calculateScale", () => {
     global.innerHeight = 2000;
 
     const margin = 0;
-    const baseRect = {
-      height: 100,
-      width: 100,
-    };
+    const height = 100;
+    const width = 100;
 
-    const scale = calculateScale({ baseRect, margin });
+    const scale = calculateScale({ height, margin, width });
 
     expect(scale).toBe(10);
   });
@@ -79,12 +67,10 @@ describe("calculateScale", () => {
     global.innerHeight = 1000;
 
     const margin = 0;
-    const baseRect = {
-      height: 100,
-      width: 100,
-    };
+    const height = 100;
+    const width = 100;
 
-    const scale = calculateScale({ baseRect, margin });
+    const scale = calculateScale({ height, margin, width });
 
     expect(scale).toBe(10);
   });
@@ -94,12 +80,10 @@ describe("calculateScale", () => {
     global.innerHeight = 1000;
 
     const margin = 250;
-    const baseRect = {
-      height: 100,
-      width: 100,
-    };
+    const height = 100;
+    const width = 100;
 
-    const scale = calculateScale({ baseRect, margin });
+    const scale = calculateScale({ height, margin, width });
 
     expect(scale).toBe(5);
   });
