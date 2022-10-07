@@ -13,7 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: c-hive/gha-npm-cache@v1
-      - run: npm ci --ignore-scripts
+      - run: npm ci
+        env:
+          HUSKY: 0
       - run: npm run lint:eslint
 
   stylelint:
@@ -22,7 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: c-hive/gha-npm-cache@v1
-      - run: npm ci --ignore-scripts
+      - run: npm ci
+        env:
+          HUSKY: 0
       - run: npm run lint:stylelint
 
   prettier:
@@ -31,5 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: c-hive/gha-npm-cache@v1
-      - run: npm ci --ignore-scripts
+      - run: npm ci
+        env:
+          HUSKY: 0
       - run: npm run lint:prettier
