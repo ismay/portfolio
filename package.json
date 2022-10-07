@@ -44,6 +44,7 @@
     "@storybook/manager-webpack5": "6.5.12",
     "@storybook/react": "6.5.12",
     "@testing-library/cypress": "8.0.3",
+    "bundlemon": "^1.4.0",
     "cypress": "10.9.0",
     "eslint": "8.24.0",
     "eslint-config-airbnb": "19.0.4",
