@@ -37,7 +37,8 @@ export default function Foreground({
       setTs(1);
     }
 
-    if (!containerRect) {
+    const hasMeasurements = !!Object.keys(containerRect).length;
+    if (!hasMeasurements) {
       return;
     }
 
