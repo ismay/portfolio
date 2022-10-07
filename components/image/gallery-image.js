@@ -21,7 +21,7 @@ export default function GalleryImage({
       height={height}
       layout="responsive"
       placeholder={blurDataURL ? "blur" : undefined}
-      sizes={`${sizes}px`}
+      sizes={sizes ? `${sizes}px` : "100vw"}
       src={src}
       width={width}
       onLoadingComplete={() => {
