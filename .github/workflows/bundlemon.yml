@@ -1,4 +1,4 @@
-name: chromatic
+name: bundlemon
 
 on: [push]
 
@@ -16,9 +16,7 @@ jobs:
           fetch-depth: 0
       - uses: c-hive/gha-npm-cache@v1
       - run: npm ci --ignore-scripts
-      - uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          buildScriptName: "storybook:build"
-          exitOnceUploaded: true
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_API_MOCKING: "enabled"
+      - run: npx bundlemon

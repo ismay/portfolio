@@ -245,5 +245,13 @@
         1500
       ]
     }
+  },
+  "bundlemon": {
+    "baseDir": "./.next",
+    "files": [
+      {
+        "path": "static/chunks/pages"
+      }
+    ]
   }
 }
