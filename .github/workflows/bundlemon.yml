@@ -20,5 +20,6 @@ jobs:
           HUSKY: 0
       - run: npm run build
         env:
-          NEXT_PUBLIC_API_MOCKING: "enabled"
+          API_TOKEN: ${{ secrets.API_TOKEN }}
+          API_URL: ${{ secrets.API_URL }}
       - run: npx bundlemon
