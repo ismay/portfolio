@@ -17,6 +17,13 @@ const Placeholder = () => (
 
 export default {
   component: Grid,
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: "1000px" }}>
+        <Story />
+      </div>
+    ),
+  ],
   title: "Grid",
 };
 
