@@ -13,7 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: c-hive/gha-npm-cache@v1
-      - run: npm ci --ignore-scripts
+      - run: npm ci
+        env:
+          HUSKY: 0
       - run: npm run test:unit
 
   e2e:
