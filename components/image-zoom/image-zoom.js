@@ -1,4 +1,4 @@
-import { useDebounceCallback } from "@react-hook/debounce";
+import useEvent from "@react-hook/event";
 import T from "prop-types";
 import { useState } from "react";
 import { useRect } from "react-use-rect";
@@ -6,7 +6,6 @@ import BoxShadow from "../box-shadow";
 import { GalleryImage } from "../image";
 import Background from "./background";
 import Foreground from "./foreground";
-import useWindowListener from "./window-listener";
 
 export default function ImageZoom({
   alt,
@@ -17,7 +16,7 @@ export default function ImageZoom({
   width,
 }) {
   const [containerRect, setContainerRect] = useState({});
-  const [containerRectRef] = useRect(setContainerRect);
+  const [containerRectRef, revalidate] = useRect(setContainerRect);
   const [zoomedSize, setZoomedSize] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const style = {
@@ -68,14 +67,25 @@ export default function ImageZoom({
    * Listeners
    */
 
-  const debouncedUnzoom = useDebounceCallback(unzoom, 300, true);
+  const handleMeasurementInvalidation = () => {
+    if (isZoomed) {
+      unzoom();
+    }
 
-  // Unzoom whenever something happens that could invalidate the calculations
-  useWindowListener("scroll", debouncedUnzoom, { enabled: isZoomed });
-  useWindowListener("resize", debouncedUnzoom, { enabled: isZoomed });
-  useWindowListener("orientationchange", debouncedUnzoom, {
-    enabled: isZoomed,
-  });
+    revalidate();
+  };
+
+  // Only add listeners client side
+  const isClient = typeof window !== "undefined";
+  const target = isClient ? window : null;
+
+  useEvent(target, "scroll", handleMeasurementInvalidation);
+  useEvent(target, "resize", handleMeasurementInvalidation);
+  useEvent(target, "orientationchange", handleMeasurementInvalidation);
+
+  /**
+   * Fall back to zero for unzoomedwidth to let gallery image defaults take over
+   */
 
   const unzoomedWidth = containerRect.width
     ? Math.round(containerRect.width)
