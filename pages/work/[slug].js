@@ -93,7 +93,7 @@ Work.propTypes = {
 export async function getStaticPaths() {
   const { works } = await client.request(gql`
     query getWorkSlugs {
-      works {
+      works(first: 50) {
         slug
       }
     }
