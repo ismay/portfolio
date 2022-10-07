@@ -21,16 +21,14 @@ export default function Home({ works }) {
         />
       </Head>
       <Grid>
-        {works.map((work, index) => (
+        {works.map((work) => (
           <Cell columns={2} key={work.id}>
             <ImageLink href={`/work/${work.slug}`} title={work.title}>
               <BoxShadow>
                 <ThumbnailImage
                   alt={work.title}
-                  amount={works.length}
                   blurDataURL={work.thumbnail.placeholderDataUrl}
                   height={work.thumbnail.height}
-                  index={index}
                   src={work.thumbnail.url}
                   width={work.thumbnail.width}
                 />

@@ -1,36 +1,41 @@
 import Image from "next/image";
 import T from "prop-types";
 import { useState } from "react";
-import calculateSizes from "./thumbnail-sizes";
+import { useRect } from "react-use-rect";
 
 export default function ThumbnailImage({
   alt,
-  amount,
   blurDataURL,
   height,
-  index,
   src,
   width,
 }) {
   const [isLoading, setIsLoading] = useState(true);
-  const sizes = calculateSizes({ amount, index });
+  const [containerRect, setContainerRect] = useState({});
+  const [containerRectRef] = useRect(setContainerRect, { resize: true });
+
+  const sizes = containerRect.width
+    ? `${Math.round(containerRect.width)}px`
+    : "100vw";
 
   return (
-    <Image
-      data-next-image
-      alt={alt}
-      blurDataURL={blurDataURL}
-      data-loading={isLoading}
-      height={height}
-      layout="responsive"
-      placeholder={blurDataURL ? "blur" : undefined}
-      sizes={sizes}
-      src={src}
-      width={width}
-      onLoadingComplete={() => {
-        setIsLoading(false);
-      }}
-    />
+    <div ref={containerRectRef}>
+      <Image
+        data-next-image
+        alt={alt}
+        blurDataURL={blurDataURL}
+        data-loading={isLoading}
+        height={height}
+        layout="responsive"
+        placeholder={blurDataURL ? "blur" : undefined}
+        sizes={sizes}
+        src={src}
+        width={width}
+        onLoadingComplete={() => {
+          setIsLoading(false);
+        }}
+      />
+    </div>
   );
 }
 
@@ -40,10 +45,8 @@ ThumbnailImage.defaultProps = {
 
 ThumbnailImage.propTypes = {
   alt: T.string.isRequired,
-  amount: T.number.isRequired,
   blurDataURL: T.string,
   height: T.number.isRequired,
-  index: T.number.isRequired,
   src: T.string.isRequired,
   width: T.number.isRequired,
 };
