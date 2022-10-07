@@ -18,7 +18,7 @@ export default {
   component: BoxShadow,
   decorators: [
     (Story) => (
-      <div style={{ padding: "25px" }}>
+      <div style={{ maxWidth: "500px", padding: "25px" }}>
         <Story />
       </div>
     ),
