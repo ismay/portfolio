@@ -8,7 +8,6 @@ concurrency:
 
 jobs:
   deploy:
-    if: github.repository_owner == 'ismay'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -16,7 +15,9 @@ jobs:
         with:
           fetch-depth: 0
       - uses: c-hive/gha-npm-cache@v1
-      - run: npm ci --ignore-scripts
+      - run: npm ci
+        env:
+          HUSKY: 0
       - uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
