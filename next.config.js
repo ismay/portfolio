@@ -4,5 +4,5 @@ module.exports = withPlaiceholder({
   images: {
     domains: ["media.graphassets.com"],
   },
-  reactStrictMode: true,
+  reactStrictMode: process.env.NODE_ENV === "development",
 });

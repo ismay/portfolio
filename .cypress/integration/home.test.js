@@ -1,7 +1,3 @@
-const nextPrefix = "/_next/static/development";
-const devPagesManifest = `${nextPrefix}/_devPagesManifest.json`;
-const devMiddlewareManifest = `${nextPrefix}/_devMiddlewareManifest.json`;
-
 const links = [
   { href: "/work/one", name: "One" },
   { href: "/work/two", name: "Two" },
@@ -10,11 +6,7 @@ const links = [
 
 describe("home", () => {
   it("renders as expected", () => {
-    cy.intercept(devPagesManifest).as("devPagesManifest");
-    cy.intercept(devMiddlewareManifest).as("devMiddlewareManifest");
-
     cy.visit("/");
-    cy.wait(["@devPagesManifest", "@devMiddlewareManifest"]);
 
     // Ensure expected links are all present
     links.forEach(({ href, name }) => {
