@@ -79,7 +79,7 @@ export default function ImageZoom({
 
   const unzoomedWidth = containerRect.width
     ? Math.round(containerRect.width)
-    : width;
+    : 0;
 
   return (
     <div
