@@ -8,7 +8,7 @@ import s from "./foreground.module.css";
 
 export default function Foreground({
   children,
-  getBaseRect,
+  containerRect,
   isZoomed,
   margin,
   setZoomedSize,
@@ -37,22 +37,34 @@ export default function Foreground({
       setTs(1);
     }
 
+    if (!containerRect) {
+      return;
+    }
+
+    const { height, left, top, width } = containerRect;
+
     if (!prevZoomed && isZoomed) {
-      const baseRect = getBaseRect();
-
-      if (!baseRect) {
-        return;
-      }
-
-      const scale = calculateScale({ baseRect, margin });
-      const x = calculateX({ baseRect, scale });
-      const y = calculateY({ baseRect, scale });
+      const scale = calculateScale({
+        height,
+        margin,
+        width,
+      });
+      const x = calculateX({
+        left,
+        scale,
+        width,
+      });
+      const y = calculateY({
+        height,
+        scale,
+        top,
+      });
 
       setTx(`${x}px`);
       setTy(`${y}px`);
       setTs(scale);
     }
-  }, [prevZoomed, isZoomed, getBaseRect, margin]);
+  }, [prevZoomed, isZoomed, margin, containerRect]);
 
   /**
    * Handle post-animation updates
@@ -70,7 +82,6 @@ export default function Foreground({
       setIsUnzooming(false);
     }
   };
-
   /**
    * Trigger the animations
    */
@@ -94,7 +105,12 @@ export default function Foreground({
 
 Foreground.propTypes = {
   children: T.node.isRequired,
-  getBaseRect: T.func.isRequired,
+  containerRect: T.shape({
+    height: T.number,
+    left: T.number,
+    top: T.number,
+    width: T.number,
+  }).isRequired,
   isZoomed: T.bool.isRequired,
   margin: T.number.isRequired,
   setZoomedSize: T.func.isRequired,
