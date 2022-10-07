@@ -1,20 +1,16 @@
 import Image from "next/image";
 import T from "prop-types";
 import { useState } from "react";
-import calculateSizes from "./gallery-sizes";
 
 export default function GalleryImage({
   alt,
-  amount,
   blurDataURL,
   height,
-  index,
-  overrideSizes,
+  sizes,
   src,
   width,
 }) {
   const [isLoading, setIsLoading] = useState(true);
-  const sizes = calculateSizes({ amount, index });
 
   return (
     <Image
@@ -25,7 +21,7 @@ export default function GalleryImage({
       height={height}
       layout="responsive"
       placeholder={blurDataURL ? "blur" : undefined}
-      sizes={overrideSizes ? `${overrideSizes}px` : sizes}
+      sizes={`${sizes}px`}
       src={src}
       width={width}
       onLoadingComplete={() => {
@@ -37,16 +33,13 @@ export default function GalleryImage({
 
 GalleryImage.defaultProps = {
   blurDataURL: "",
-  overrideSizes: 0,
 };
 
 GalleryImage.propTypes = {
   alt: T.string.isRequired,
-  amount: T.number.isRequired,
   blurDataURL: T.string,
   height: T.number.isRequired,
-  index: T.number.isRequired,
-  overrideSizes: T.number,
+  sizes: T.number.isRequired,
   src: T.string.isRequired,
   width: T.number.isRequired,
 };

@@ -1,6 +1,7 @@
 import { useDebounceCallback } from "@react-hook/debounce";
 import T from "prop-types";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { useRect } from "react-use-rect";
 import BoxShadow from "../box-shadow";
 import { GalleryImage } from "../image";
 import Background from "./background";
@@ -9,29 +10,19 @@ import useWindowListener from "./window-listener";
 
 export default function ImageZoom({
   alt,
-  amount,
   blurDataURL,
   height,
-  index,
   margin,
   src,
   width,
 }) {
-  const baseRef = useRef(null);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [containerRect, setContainerRect] = useState({});
+  const [containerRectRef] = useRect(setContainerRect);
   const [zoomedSize, setZoomedSize] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
   const style = {
     "--transition-duration": "300ms",
     "--transition-timing-function": "ease-in-out",
-  };
-
-  // Allow retrieving the base size from within a child component
-  const getBaseRect = () => {
-    if (!baseRef.current) {
-      return undefined;
-    }
-
-    return baseRef.current.getBoundingClientRect();
   };
 
   /**
@@ -41,10 +32,12 @@ export default function ImageZoom({
   const zoom = () => {
     setIsZoomed(true);
   };
+
   const unzoom = () => {
     setIsZoomed(false);
     setZoomedSize(0);
   };
+
   const toggleZoom = () => {
     if (isZoomed) {
       unzoom();
@@ -84,9 +77,13 @@ export default function ImageZoom({
     enabled: isZoomed,
   });
 
+  const unzoomedWidth = containerRect.width
+    ? Math.round(containerRect.width)
+    : width;
+
   return (
     <div
-      ref={baseRef}
+      ref={containerRectRef}
       role="button"
       style={style}
       tabIndex="0"
@@ -95,7 +92,7 @@ export default function ImageZoom({
     >
       <Background isZoomed={isZoomed} />
       <Foreground
-        getBaseRect={getBaseRect}
+        containerRect={containerRect}
         isZoomed={isZoomed}
         margin={margin}
         setZoomedSize={setZoomedSize}
@@ -103,11 +100,9 @@ export default function ImageZoom({
         <BoxShadow>
           <GalleryImage
             alt={alt}
-            amount={amount}
             blurDataURL={blurDataURL}
             height={height}
-            index={index}
-            overrideSizes={zoomedSize}
+            sizes={isZoomed && zoomedSize ? zoomedSize : unzoomedWidth}
             src={src}
             width={width}
           />
@@ -124,10 +119,8 @@ ImageZoom.defaultProps = {
 
 ImageZoom.propTypes = {
   alt: T.string.isRequired,
-  amount: T.number.isRequired,
   blurDataURL: T.string,
   height: T.number.isRequired,
-  index: T.number.isRequired,
   margin: T.number,
   src: T.string.isRequired,
   width: T.number.isRequired,
