@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@cloudfour/simple-svg-placeholder": "1.1.0",
-    "@next/eslint-plugin-next": "^12.3.1",
+    "@next/eslint-plugin-next": "12.3.1",
     "@percy/cli": "1.10.4",
     "@percy/cypress": "3.1.2",
     "@storybook/addon-essentials": "6.5.12",
