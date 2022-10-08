@@ -11,7 +11,7 @@
     "start": "next start",
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006 --quiet",
-    "pretest:e2e": "NODE_ENV=test npm run dev & wait-on -s 1 http://localhost:3000",
+    "pretest:e2e": "npm run dev & wait-on -s 1 http://localhost:3000",
     "test:e2e": "cypress open --e2e --config-file .cypress/cypress.config.js",
     "posttest:e2e": "kill-port 3000",
     "test:unit": "jest"
