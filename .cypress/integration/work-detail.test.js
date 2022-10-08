@@ -11,16 +11,10 @@ describe("work detail", () => {
     cy.wait(["@devPagesManifest", "@devMiddlewareManifest"]);
 
     // Ensure all images are done loading
-    cy.get("[data-next-image]").should(($images) => {
-      expect($images.get(0)).to.be.visible;
-      expect($images.get(1)).to.be.visible;
-      expect($images.get(2)).to.be.visible;
-    });
-
-    cy.get("[data-next-image]").should(($images) => {
-      expect($images.get(0)).to.have.attr("data-loading", "false");
-      expect($images.get(1)).to.have.attr("data-loading", "false");
-      expect($images.get(2)).to.have.attr("data-loading", "false");
+    cy.get("[data-next-image]").each(($img) => {
+      cy.wrap($img)
+        .should("be.visible")
+        .and("have.attr", "data-loading", "false");
     });
 
     cy.percySnapshot("work detail page renders as expected");
