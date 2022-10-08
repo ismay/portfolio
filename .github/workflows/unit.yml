@@ -1,0 +1,19 @@
+name: unit
+
+on: [push]
+
+concurrency:
+  group: ${{ github.workflow}}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  jest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: c-hive/gha-npm-cache@v1
+      - run: npm ci
+        env:
+          HUSKY: 0
+      - run: npm run test:unit

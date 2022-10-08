@@ -1,35 +1,23 @@
-name: test
+name: e2e
 
-on: [push]
+on: [deployment_status]
 
 concurrency:
   group: ${{ github.workflow}}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  unit:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v3
-      - uses: c-hive/gha-npm-cache@v1
-      - run: npm ci
-        env:
-          HUSKY: 0
-      - run: npm run test:unit
-
   e2e:
+    if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - uses: cypress-io/github-action@v2
         with:
-          start: npm run dev
-          wait-on: "npx wait-on -s 1 http://localhost:3000"
           config-file: .cypress/cypress.config.js
           command-prefix: "percy exec -- npx"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          NODE_ENV: "test"
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
           HUSKY: 0
