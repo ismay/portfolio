@@ -205,6 +205,7 @@
           ".cypress/**/*.js"
         ],
         "rules": {
+          "no-html-link-for-pages": "off",
           "jest/expect-expect": "off",
           "jest/valid-expect-in-promise": "off",
           "jest/valid-expect": "off",
