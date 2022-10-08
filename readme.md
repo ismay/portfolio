@@ -16,7 +16,6 @@
 - `GITHUB_TOKEN`
 - `HUSKY`
 - `PERCY_TOKEN`
-- `VERCEL_TOKEN`
 
 ### Services
 
