@@ -157,7 +157,6 @@
     },
     "ignorePatterns": [
       "!.cypress/",
-      "!.msw/",
       "!.storybook/"
     ],
     "overrides": [
@@ -186,16 +185,6 @@
         "rules": {
           "no-param-reassign": "off",
           "import/prefer-default-export": "off"
-        }
-      },
-      {
-        "files": [
-          ".msw/**/*.js"
-        ],
-        "rules": {
-          "import/no-extraneous-dependencies": "off",
-          "import/prefer-default-export": "off",
-          "global-require": "off"
         }
       },
       {
