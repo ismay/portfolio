@@ -14,7 +14,7 @@ export default function GalleryImage({
 
   return (
     <Image
-      data-next-image
+      data-gallery-image
       alt={alt}
       blurDataURL={blurDataURL}
       data-loading={isLoading}

@@ -8,10 +8,6 @@ import Main from "../components/main";
 import Page from "../components/page";
 import useLoading from "../hooks/loading";
 
-if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
-  require("../.msw");
-}
-
 export default function CustomApp({ Component, pageProps }) {
   usePanelbear(process.env.NEXT_PUBLIC_PANELBEAR_SITE_ID);
   const isLoading = useLoading();

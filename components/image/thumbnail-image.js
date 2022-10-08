@@ -21,7 +21,7 @@ export default function ThumbnailImage({
   return (
     <div ref={containerRectRef}>
       <Image
-        data-next-image
+        data-thumbnail-image
         alt={alt}
         blurDataURL={blurDataURL}
         data-loading={isLoading}
