@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@cloudfour/simple-svg-placeholder": "1.1.0",
+    "@next/eslint-plugin-next": "^12.3.1",
     "@percy/cli": "1.10.4",
     "@percy/cypress": "3.1.2",
     "@storybook/addon-essentials": "6.5.12",
@@ -48,7 +49,6 @@
     "cypress": "10.9.0",
     "eslint": "8.24.0",
     "eslint-config-airbnb": "19.0.4",
-    "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-cypress": "2.12.1",
     "eslint-plugin-import": "2.26.0",
@@ -100,11 +100,12 @@
   },
   "eslintConfig": {
     "extends": [
-      "next",
       "airbnb",
+      "airbnb/hooks",
       "plugin:sort/recommended",
       "plugin:jest/recommended",
       "plugin:cypress/recommended",
+      "plugin:@next/next/recommended",
       "prettier"
     ],
     "rules": {
