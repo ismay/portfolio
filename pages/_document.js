@@ -5,6 +5,7 @@ class CustomDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta name="robots" content="noindex" />
           <link
             href="/favicon/favicon-16x16.png"
             rel="icon"
