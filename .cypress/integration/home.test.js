@@ -1,5 +1,5 @@
 const links = [
-  { href: "/work/crypto-fascism", name: "Crypto Fascism" },
+  { href: "/work/crypto", name: "Crypto" },
   { href: "/work/sleep", name: "Sleep" },
   { href: "/work/extraordinary-rendition", name: "Extraordinary Rendition" },
   { href: "/work/enhanced-interrogation", name: "Enhanced Interrogation" },
